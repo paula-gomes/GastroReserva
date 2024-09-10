@@ -19,11 +19,17 @@ public class Reserva {
             throw new IllegalArgumentException("Quantidade excede a capacidade do restaurante");
         }
 
+        if(horario.isBefore(restaurante.getHorarioDeFuncionamento().getHoraAbertura()) ||
+                horario.isAfter(restaurante.getHorarioDeFuncionamento().getHoraFechamento())){
+            throw new IllegalArgumentException("Horario incompativel com o funcionamento do restaurante");
+        }
+
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.horario = horario;
         this.data = data;
         this.quantidade = quantidade;
+        this.restaurante.setCadeirasDisponiveis(quantidade);
     }
 
     public Cliente getCliente() {

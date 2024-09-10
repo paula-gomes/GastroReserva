@@ -9,6 +9,7 @@ public class Restaurante {
     private String tipoDeCozinha;
     private HorarioDeFuncionamento horarioDeFuncionamento;
     private Integer capacidade;
+    private Integer cadeirasDisponiveis;
 
     public Restaurante(String nome, Endereco endereco, String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento, Integer capacidade) {
 
@@ -21,6 +22,7 @@ public class Restaurante {
         this.tipoDeCozinha = tipoDeCozinha;
         this.horarioDeFuncionamento = horarioDeFuncionamento;
         this.capacidade = capacidade;
+        this.cadeirasDisponiveis = capacidade;
     }
 
     public String getNome() {
@@ -61,5 +63,13 @@ public class Restaurante {
 
     public void setCapacidade(Integer capacidade) {
         this.capacidade = capacidade;
+    }
+
+    public Integer getCadeirasDisponiveis() {
+        return cadeirasDisponiveis;
+    }
+
+    public void setCadeirasDisponiveis(Integer cadeirasOcupadas) {
+        this.cadeirasDisponiveis = cadeirasDisponiveis - cadeirasOcupadas;
     }
 }
