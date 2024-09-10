@@ -8,9 +8,5 @@ public class FabricaCliente {
         cliente = new Cliente(cpf, nome, email);
         return cliente;
     }
-
-    public Cliente comCpfNomeEmail(String cpf, String nome, String email) {
-        cliente = new Cliente(cpf, nome, email);
-        return cliente;
-    }
+    
 }
