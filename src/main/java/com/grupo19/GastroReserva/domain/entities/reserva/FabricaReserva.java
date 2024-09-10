@@ -19,4 +19,19 @@ public class FabricaReserva {
         reserva.setHorario(horario);
         return reserva;
     }
+
+    public Reserva alterarData(LocalDate data){
+        reserva.setData(data);
+        return reserva;
+    }
+
+    public Reserva alterarQuantidade(Integer quantidade){
+        reserva.setQuantidade(quantidade);
+        return reserva;
+    }
+
+    public Reserva cancelarReserva(){
+        reserva = null;
+        return reserva;
+    }
 }
