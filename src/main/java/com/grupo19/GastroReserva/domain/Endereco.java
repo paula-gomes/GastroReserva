@@ -23,6 +23,10 @@ public class Endereco {
         this.estado = estado;
     }
 
+    public Endereco() {
+
+    }
+
     public String getCep() {
         return cep;
     }

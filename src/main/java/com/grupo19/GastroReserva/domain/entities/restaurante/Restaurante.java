@@ -25,6 +25,10 @@ public class Restaurante {
         this.cadeirasDisponiveis = capacidade;
     }
 
+    public Restaurante() {
+
+    }
+
     public String getNome() {
         return nome;
     }
@@ -62,14 +66,23 @@ public class Restaurante {
     }
 
     public void setCapacidade(Integer capacidade) {
+
         this.capacidade = capacidade;
+        this.cadeirasDisponiveis = capacidade;
     }
 
     public Integer getCadeirasDisponiveis() {
         return cadeirasDisponiveis;
     }
 
+
     public void setCadeirasDisponiveis(Integer cadeirasOcupadas) {
         this.cadeirasDisponiveis = cadeirasDisponiveis - cadeirasOcupadas;
+    }
+    public void ocuparCadeiras(Integer cadeirasOcupadas) {
+        if (cadeirasOcupadas < 0 || cadeirasOcupadas > cadeirasDisponiveis) {
+            throw new IllegalArgumentException("Número inválido de cadeiras ocupadas");
+        }
+        this.cadeirasDisponiveis -= cadeirasOcupadas;
     }
 }

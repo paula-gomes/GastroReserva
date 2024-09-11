@@ -6,6 +6,11 @@ public class HorarioDeFuncionamento {
     private LocalTime horaAbertura;
     private LocalTime horaFechamento;
 
+    public HorarioDeFuncionamento(LocalTime horaAbertura, LocalTime horaFechamento) {
+        this.horaAbertura = horaAbertura;
+        this.horaFechamento = horaFechamento;
+    }
+
     public LocalTime getHoraAbertura() {
         return horaAbertura;
     }
