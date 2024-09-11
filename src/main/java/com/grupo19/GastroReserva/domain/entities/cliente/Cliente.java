@@ -1,9 +1,14 @@
 package com.grupo19.GastroReserva.domain.entities.cliente;
 
+import com.grupo19.GastroReserva.domain.entities.restaurante.Restaurante;
+
+import java.util.List;
+
 public class Cliente {
     private String cpf;
     private String nome;
     private String email;
+    private List<Restaurante> restaurantes;
 
     public Cliente(String cpf, String nome, String email) {
 
@@ -39,4 +44,14 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<Restaurante> getRestaurantes() {
+        return restaurantes;
+    }
+
+    public void addRestaurante(Restaurante restaurante) {
+        this.restaurantes.add(restaurante);
+    }
+
+
 }

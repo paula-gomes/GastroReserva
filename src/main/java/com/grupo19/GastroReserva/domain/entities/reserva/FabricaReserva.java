@@ -12,6 +12,8 @@ public class FabricaReserva {
 
     public Reserva fazerReserva(Cliente cliente, Restaurante restaurante, LocalTime horario, LocalDate data, Integer quantidade){
         reserva = new Reserva(cliente, restaurante, horario, data, quantidade);
+        reserva.getRestaurante().setCadeirasDisponiveis(quantidade);
+        reserva.getCliente().addRestaurante(restaurante);
         return reserva;
     }
 
