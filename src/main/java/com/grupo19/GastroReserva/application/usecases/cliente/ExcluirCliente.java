@@ -1,6 +1,7 @@
 package com.grupo19.GastroReserva.application.usecases.cliente;
 
 import com.grupo19.GastroReserva.application.gateways.cliente.ExcluirClienteInterface;
+import com.grupo19.GastroReserva.domain.entities.cliente.Cliente;
 
 public class ExcluirCliente {
 
@@ -10,7 +11,7 @@ public class ExcluirCliente {
         this.excluirClienteInterface = excluirClienteInterface;
     }
 
-    public void excluirCliente() {
-        excluirClienteInterface.excluirCliente();
+    public void excluirCliente(Cliente cliente) {
+        excluirClienteInterface.excluirCliente(cliente);
     }
 }
