@@ -29,6 +29,15 @@ public class Restaurante {
 
     }
 
+    public Restaurante(String nome, Endereco endereco, String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento, Integer capacidade, Integer cadeirasDisponiveis) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.tipoDeCozinha = tipoDeCozinha;
+        this.horarioDeFuncionamento = horarioDeFuncionamento;
+        this.capacidade = capacidade;
+        this.cadeirasDisponiveis = cadeirasDisponiveis;
+    }
+
     public String getNome() {
         return nome;
     }

@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
-public class RestauranteTest {
+public class
+RestauranteTest {
 
     @Test
     public void todosCamposEstaoPresentes() {

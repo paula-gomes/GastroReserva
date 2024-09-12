@@ -28,6 +28,9 @@ public class Avaliacao {
         this.data = data;
     }
 
+    public Avaliacao() {
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
