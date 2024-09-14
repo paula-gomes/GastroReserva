@@ -11,6 +11,10 @@ public class HorarioDeFuncionamento {
         this.horaFechamento = horaFechamento;
     }
 
+    public HorarioDeFuncionamento() {
+
+    }
+
     public LocalTime getHoraAbertura() {
         return horaAbertura;
     }

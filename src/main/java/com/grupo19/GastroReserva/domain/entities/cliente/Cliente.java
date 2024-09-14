@@ -2,6 +2,7 @@ package com.grupo19.GastroReserva.domain.entities.cliente;
 
 import com.grupo19.GastroReserva.domain.entities.restaurante.Restaurante;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
@@ -19,6 +20,7 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
+        this.restaurantes = new ArrayList<>();
     }
 
     public Cliente() {
