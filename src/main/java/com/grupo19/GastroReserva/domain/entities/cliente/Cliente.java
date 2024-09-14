@@ -12,7 +12,7 @@ public class Cliente {
 
     public Cliente(String cpf, String nome, String email) {
 
-        if(cpf.isBlank() || nome.isBlank() || email.isBlank()){
+        if(cpf == null || cpf.isBlank() || nome == null || nome.isBlank() || email == null || email.isBlank()){
             throw new IllegalArgumentException("Campo Obrigatório está nulo ou vazio");
         }
 
@@ -28,7 +28,7 @@ public class Cliente {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf() {
         this.cpf = cpf;
     }
 
