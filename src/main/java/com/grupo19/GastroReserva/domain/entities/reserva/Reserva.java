@@ -32,6 +32,10 @@ public class Reserva {
         this.restaurante.setCadeirasDisponiveis(quantidade);
     }
 
+    public Reserva() {
+
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
