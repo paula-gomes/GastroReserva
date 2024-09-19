@@ -13,4 +13,12 @@ public class RestauranteMapper {
                 restaurante.getCapacidade(),
                 restaurante.getCadeirasDisponiveis());
     }
+
+    public Restaurante toRestaurante(RestauranteEntity restauranteEntity) {
+        return new Restaurante(restauranteEntity.getNome(),
+                restauranteEntity.getEndereco(),
+                restauranteEntity.getTipoDeCozinha(),
+                restauranteEntity.getHorarioDeFuncionamento(),
+                restauranteEntity.getCapacidade());
+    }
 }

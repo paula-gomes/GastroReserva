@@ -20,6 +20,9 @@ public class Avaliacao {
         if(nota < 0 || nota > 5){
             throw new IllegalArgumentException("Nota inválida");
         }
+        if(!cliente.getRestaurantes().contains(restaurante)){
+            throw new IllegalArgumentException("O Cliente nunca frequentou este restaurante");
+        }
 
         this.cliente = cliente;
         this.restaurante = restaurante;
