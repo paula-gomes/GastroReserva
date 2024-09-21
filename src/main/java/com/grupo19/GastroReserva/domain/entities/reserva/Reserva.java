@@ -6,7 +6,9 @@ import com.grupo19.GastroReserva.domain.entities.restaurante.Restaurante;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
 public class Reserva {
+    private Long id;
     private Cliente cliente;
     private Restaurante restaurante;
     private LocalTime horario;
@@ -34,6 +36,14 @@ public class Reserva {
 
     public Reserva() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Cliente getCliente() {

@@ -8,11 +8,14 @@ import com.grupo19.GastroReserva.domain.entities.restaurante.Restaurante;
 import com.grupo19.GastroReserva.infra.persistence.restaurante.RestauranteEntity;
 import com.grupo19.GastroReserva.infra.persistence.restaurante.RestauranteRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteInterface, CadastrarRestauranteInterface,
-        ExcluirRestauranteInterface, ListarRestaurantesInterface {
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Repository
+public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteInterface,
+        CadastrarRestauranteInterface, ExcluirRestauranteInterface, ListarRestaurantesInterface {
 
     private final RestauranteRepository restauranteRepository;
     private final RestauranteMapper mapper;
@@ -44,9 +47,9 @@ public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteIn
 
     @Override
     public List<Restaurante> listarRestaurantes() {
-        List<RestauranteEntity> entities = restauranteRepository.findAll();
-        List<Restaurante> domains = new ArrayList<>();
-        entities.forEach(entity -> domains.add(mapper.toDomain(entity)));
-        return domains;
+        return restauranteRepository.findAll()
+                .stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
     }
 }

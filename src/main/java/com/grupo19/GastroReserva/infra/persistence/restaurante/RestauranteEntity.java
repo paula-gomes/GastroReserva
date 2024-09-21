@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class RestauranteEntity {
 
+
     private Long id;
     private String nome;
     private Endereco endereco;

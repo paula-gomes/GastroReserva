@@ -7,10 +7,12 @@ import com.grupo19.GastroReserva.application.gateways.cliente.ListarClientesInte
 import com.grupo19.GastroReserva.domain.entities.cliente.Cliente;
 import com.grupo19.GastroReserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.GastroReserva.infra.persistence.cliente.ClienteRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class RepositorioDeClienteJpa implements AlterarEmailClienteInterface, CadastrarClienteInterface, ExcluirClienteInterface, ListarClientesInterface {
 
     private final ClienteRepository clienteRepository;
