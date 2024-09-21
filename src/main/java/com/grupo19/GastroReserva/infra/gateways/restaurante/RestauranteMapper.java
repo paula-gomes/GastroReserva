@@ -14,7 +14,7 @@ public class RestauranteMapper {
                 restaurante.getCadeirasDisponiveis());
     }
 
-    public Restaurante toRestaurante(RestauranteEntity restauranteEntity) {
+    public Restaurante toDomain(RestauranteEntity restauranteEntity) {
         return new Restaurante(restauranteEntity.getNome(),
                 restauranteEntity.getEndereco(),
                 restauranteEntity.getTipoDeCozinha(),

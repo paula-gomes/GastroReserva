@@ -11,7 +11,7 @@ public class Cliente {
     private String email;
     private List<Restaurante> restaurantes;
 
-    public Cliente(String cpf, String nome, String email) {
+    public Cliente(String cpf, String nome, String email, List<Restaurante> restaurantes) {
 
         if(cpf == null || cpf.isBlank() || nome == null || nome.isBlank() || email == null || email.isBlank()){
             throw new IllegalArgumentException("Campo Obrigatório está nulo ou vazio");
@@ -20,7 +20,7 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.restaurantes = new ArrayList<>();
+        this.restaurantes = restaurantes;
     }
 
     public Cliente() {
