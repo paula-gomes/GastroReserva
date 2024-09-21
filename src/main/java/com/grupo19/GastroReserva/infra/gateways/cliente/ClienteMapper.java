@@ -2,7 +2,9 @@ package com.grupo19.GastroReserva.infra.gateways.cliente;
 
 import com.grupo19.GastroReserva.domain.entities.cliente.Cliente;
 import com.grupo19.GastroReserva.infra.persistence.cliente.ClienteEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClienteMapper {
 
     public ClienteEntity toEntity(Cliente cliente) {
@@ -15,7 +17,7 @@ public class ClienteMapper {
     public Cliente toDomain(ClienteEntity entity) {
         return new Cliente(entity.getCpf(),
                 entity.getNome(),
-                entity.getEmail(),
-                entity.getRestaurantes());
+                entity.getEmail());
+              /*  entity.getRestaurantes());*/
     }
 }

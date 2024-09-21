@@ -2,16 +2,13 @@ package com.grupo19.GastroReserva.application.usecases.cliente;
 
 import com.grupo19.GastroReserva.application.gateways.cliente.ExcluirClienteInterface;
 import com.grupo19.GastroReserva.domain.entities.cliente.Cliente;
+import org.springframework.stereotype.Service;
 
-public class ExcluirCliente {
+@Service
+public class ExcluirCliente implements ExcluirClienteInterface {
 
-    private final ExcluirClienteInterface excluirClienteInterface;
-
-    public ExcluirCliente(ExcluirClienteInterface excluirClienteInterface) {
-        this.excluirClienteInterface = excluirClienteInterface;
-    }
 
     public void excluirCliente(Cliente cliente) {
-        excluirClienteInterface.excluirCliente(cliente);
+       excluirCliente(cliente);
     }
 }

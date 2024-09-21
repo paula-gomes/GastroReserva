@@ -1,18 +1,24 @@
 package com.grupo19.GastroReserva.infra.persistence.cliente;
 
 import com.grupo19.GastroReserva.domain.entities.restaurante.Restaurante;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@Entity
+@Table(name = "cliente_entity")
 public class ClienteEntity {
 
+    @Id
     private Long id;
     private String cpf;
     private String nome;
     private String email;
-    private List<Restaurante> restaurantes;
+  /*  private List<Restaurante> restaurantes;*/
 
     public ClienteEntity() {
     }
@@ -21,6 +27,14 @@ public class ClienteEntity {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.restaurantes = restaurantes;
+       /* this.restaurantes = restaurantes;*/
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
