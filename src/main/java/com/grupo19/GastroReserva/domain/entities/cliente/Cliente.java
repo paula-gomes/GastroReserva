@@ -26,6 +26,9 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String cpf, String nome, String email) {
+    }
+
     public String getCpf() {
         return cpf;
     }
