@@ -15,22 +15,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FabricaAvaliacaoTest {
 
     @Test
-    public void deveRealizarAvaliacaoComFabricaDeAvaliacao(){
+    public void deveRealizarAvaliacaoComFabricaDeAvaliacao() {
         FabricaAvaliacao fabrica = new FabricaAvaliacao();
 
-        Cliente cliente = new Cliente("12345678910", "nopmeCliente", "email@teste.com");
+        Cliente cliente = new Cliente("12345678910", "nomeCliente", "email@teste.com");
         Endereco endereco = new Endereco("12345-789", "logradouro", "100", "bairro", "cidade", "SP");
-        HorarioDeFuncionamento horarioFuncionamento = new HorarioDeFuncionamento(LocalTime.of(8,30), LocalTime.of(18,30));
-        Restaurante restaurante = new Restaurante("nomeRestaurante", endereco, "tipo Cozinha", horarioFuncionamento, 100 );
+        HorarioDeFuncionamento horarioFuncionamento = new HorarioDeFuncionamento(LocalTime.of(8, 30), LocalTime.of(18, 30));
+        Restaurante restaurante = new Restaurante("nomeRestaurante", endereco, "tipo Cozinha", horarioFuncionamento, 100);
+
+        cliente.addRestaurante(restaurante);
+
         LocalDate data = LocalDate.now();
 
         Avaliacao avaliacao = fabrica.realizarAvaliacao(cliente, restaurante, 4, "muito bom", data);
+
         assertNotNull(avaliacao);
         assertEquals(cliente, avaliacao.getCliente());
         assertEquals(restaurante, avaliacao.getRestaurante());
         assertEquals(4, avaliacao.getNota());
         assertEquals("muito bom", avaliacao.getComentario());
         assertEquals(data, avaliacao.getData());
-
     }
 }

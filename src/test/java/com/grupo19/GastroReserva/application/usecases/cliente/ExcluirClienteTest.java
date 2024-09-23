@@ -9,11 +9,15 @@ import static org.mockito.Mockito.*;
 public class ExcluirClienteTest {
     @Test
     public void deveExcluirCliente() {
+
         ExcluirClienteInterface excluirClienteInterface = mock(ExcluirClienteInterface.class);
-        ExcluirCliente excluirCliente = new ExcluirCliente(excluirClienteInterface);
+
+
+        ExcluirCliente excluirCliente = new ExcluirCliente();
+
         Cliente cliente = new Cliente("12345678900", "Cliente", "cliente@email.com");
 
-        excluirCliente.excluirCliente(cliente);
+        excluirClienteInterface.excluirCliente(cliente);
 
         verify(excluirClienteInterface, times(1)).excluirCliente(cliente);
     }

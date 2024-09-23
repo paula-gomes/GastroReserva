@@ -9,12 +9,12 @@ import org.mockito.Mockito;
 public class CadastrarClienteTest {
     @Test
     public void deveCadastrarCliente() {
-        CadastrarClienteInterface mockInterface = Mockito.mock(CadastrarClienteInterface.class);
+        CadastrarCliente cadastrarCliente = new CadastrarCliente();
         Cliente validClient = new Cliente("12345678900", "Cliente", "cliente@email.com");
-        Mockito.when(mockInterface.cadastrarCliente(validClient)).thenReturn(validClient);
 
-        CadastrarCliente cadastrarCliente = new CadastrarCliente(mockInterface);
+
         Cliente result = cadastrarCliente.cadastrarCliente(validClient);
+
 
         Assertions.assertNotNull(result);
         Assertions.assertEquals("12345678900", result.getCpf());
