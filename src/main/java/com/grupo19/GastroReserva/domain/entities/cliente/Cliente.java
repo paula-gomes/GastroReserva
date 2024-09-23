@@ -20,20 +20,24 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.restaurantes = restaurantes;
+        this.restaurantes = (restaurantes != null) ? restaurantes : new ArrayList<>();
     }
 
     public Cliente() {
+        this.restaurantes = new ArrayList<>();
     }
 
     public Cliente(String cpf, String nome, String email) {
+        this(cpf, nome, email, new ArrayList<>());
     }
+
+
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf() {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
