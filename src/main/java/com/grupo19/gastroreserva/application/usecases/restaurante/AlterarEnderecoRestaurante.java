@@ -11,7 +11,7 @@ public class AlterarEnderecoRestaurante {
         this.alterarEnderecoRestauranteInterface = alterarEnderecoRestauranteInterface;
     }
 
-    public Restaurante alterarRestaurante(Restaurante restaurante) {
+    public Restaurante alterarEnderecoRestaurante(Restaurante restaurante) {
         return alterarEnderecoRestauranteInterface.alterarEnderecoRestaurante(restaurante);
     }
 }

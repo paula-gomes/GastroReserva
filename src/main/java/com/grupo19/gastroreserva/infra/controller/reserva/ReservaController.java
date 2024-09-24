@@ -55,4 +55,41 @@ public class ReservaController {
                 reservaFeita.getQuantidade());
     }
 
+    @PostMapping("/data")
+    public ReservaDTO alterarData(@RequestBody ReservaDTO reservaDTO){
+        Reserva reservaFeita = alterarDataReserva.alterarDataReserva(new Reserva(reservaDTO.cliente(),
+                reservaDTO.restaurante(),
+                reservaDTO.horario(),
+                reservaDTO.data(),
+                reservaDTO.quantidade()));
+        return new ReservaDTO(reservaFeita.getCliente(),
+                reservaFeita.getRestaurante(),
+                reservaFeita.getHorario(),
+                reservaFeita.getData(),
+                reservaFeita.getQuantidade());
+    }
+
+    @PostMapping("/hora")
+    public ReservaDTO alterarHora(@RequestBody ReservaDTO reservaDTO){
+        Reserva reservaFeita = alterarHorarioReserva.alterarHorarioReserva(new Reserva(reservaDTO.cliente(),
+                reservaDTO.restaurante(),
+                reservaDTO.horario(),
+                reservaDTO.data(),
+                reservaDTO.quantidade()));
+        return new ReservaDTO(reservaFeita.getCliente(),
+                reservaFeita.getRestaurante(),
+                reservaFeita.getHorario(),
+                reservaFeita.getData(),
+                reservaFeita.getQuantidade());
+    }
+
+    @DeleteMapping
+    public ReservaDTO excluirReserva(@RequestBody ReservaDTO reservaDTO){
+        cancelarReserva.cancelarReserva(new Reserva(reservaDTO.cliente(),
+                reservaDTO.restaurante(),
+                reservaDTO.horario(),
+                reservaDTO.data(),
+                reservaDTO.quantidade()));
+    }
+
 }
