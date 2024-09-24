@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class AlterarDataReservaInterfaceTest {
+public class AlterarDataReservaInterfaceTest {
     @Mock
     private AlterarDataReservaInterface alterarDataReservaInterface;
 
@@ -31,7 +31,7 @@ class AlterarDataReservaInterfaceTest {
     }
 
     @Test
-   void deveAlterarDataReservaComSucesso() {
+    public void deveAlterarDataReservaComSucesso() {
         Reserva reserva = new Reserva();
         reserva.setData(LocalDate.of(2024, 9, 15));
 

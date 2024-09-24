@@ -10,14 +10,14 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
- class RealizarAvaliacaoInterfaceTest {
+public class RealizarAvaliacaoInterfaceTest {
 
     @Mock
     private RealizarAvaliacaoInterface realizarAvaliacaoInterface;
     AutoCloseable openMocks;
 
     @BeforeEach
-     void setUp() {
+    public void setUp() {
         openMocks = MockitoAnnotations.openMocks(this);
     }
 
@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
         openMocks.close();
     }
     @Test
-     void deveRealizarAvaliacao() {
+    public void deveRealizarAvaliacao() {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setComentario("Comentario");
         when(realizarAvaliacaoInterface.realizarAvaliacao(avaliacao)).thenReturn(avaliacao);

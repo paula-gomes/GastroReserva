@@ -12,7 +12,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class CadastrarRestauranteTest {
+public class CadastrarRestauranteTest {
 
     @Mock
     private CadastrarRestauranteInterface cadastrarRestauranteInterface;
@@ -34,14 +34,15 @@ class CadastrarRestauranteTest {
     }
 
     @Test
-    void deveCadastrarRestauranteComSucesso() {
+    public void deveCadastrarRestauranteComSucesso() {
         Restaurante restaurante = new Restaurante();
         restaurante.setNome("Restaurante Teste");
         restaurante.setEndereco(new Endereco("12345-678", "logradouro", "100", "bairro", "cidade", "SP"));
 
-        when(cadastrarRestauranteInterface.cadastrarRestaurante(restaurante)).thenAnswer(invocation ->
-                invocation.getArgument(0)
-        );
+        when(cadastrarRestauranteInterface.cadastrarRestaurante(restaurante)).thenAnswer(invocation -> {
+            Restaurante r = invocation.getArgument(0);
+            return r;
+        });
 
         Restaurante restauranteCadastrado = cadastrarRestaurante.cadastrarRestaurante(restaurante);
         assertEquals("Restaurante Teste", restauranteCadastrado.getNome());

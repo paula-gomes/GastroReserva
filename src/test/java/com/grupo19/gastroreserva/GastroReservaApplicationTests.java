@@ -8,8 +8,6 @@ class GastroReservaApplicationTests {
 
 	@Test
 	void contextLoads() {
-		// Este método é intencionalmente deixado vazio.
-		// Ele serve apenas para garantir que o contexto do Spring Boot seja carregado corretamente.
 	}
 
 }

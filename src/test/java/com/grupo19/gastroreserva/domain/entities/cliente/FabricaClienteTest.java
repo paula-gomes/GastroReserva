@@ -10,10 +10,10 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class FabricaClienteTest {
+public class FabricaClienteTest {
 
     @Test
-    void deveCriarClienteComNomeCpfEmailUtilizandoFabricaCliente(){
+    public void deveCriarClienteComNomeCpfEmailUtilizandoFabricaCliente(){
 
         FabricaCliente fabrica = new FabricaCliente();
 
@@ -25,7 +25,7 @@ class FabricaClienteTest {
     }
 
     @Test
-    void deveAdicionarRestauranteUtilizandoFabricaCliente(){
+    public void deveAdicionarRestauranteUtilizandoFabricaCliente(){
 
         FabricaCliente fabrica = new FabricaCliente();
         Endereco endereco = new Endereco("12345-789", "logradouro", "100", "bairro", "cidade", "SP");
@@ -33,7 +33,7 @@ class FabricaClienteTest {
         Restaurante restaurante = new Restaurante("nomeRestaurante", endereco, "tipo Cozinha", horarioFuncionamento, 100);
 
         Cliente cliente = fabrica.comNomeCpfEmail("nomeCliente", "12345678910", "email@teste.com");
-        fabrica.incluirRestaurante(restaurante);
+        cliente = fabrica.incluirRestaurante(restaurante);
         assertNotNull(cliente);
         assertEquals(1, cliente.getRestaurantes().size());
         assertEquals("nomeRestaurante", cliente.getRestaurantes().get(0).getNome());

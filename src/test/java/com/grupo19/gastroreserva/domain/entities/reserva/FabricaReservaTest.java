@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class FabricaReservaTest {
+public class FabricaReservaTest {
 
     @Test
-    void deveRealizarReservaComFabricasDeReserva(){
+    public void deveRealizarReservaComFabricasDeReserva(){
         FabricaReserva fabrica = new FabricaReserva();
         Cliente cliente = new Cliente("123456789120", "nomeCliente", "email@teste.com");
         Endereco endereco = new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP");
@@ -36,7 +36,7 @@ class FabricaReservaTest {
 
     }
     @Test
-    void deveAlterarData() {
+    public void deveAlterarData() {
         Cliente cliente = mock(Cliente.class);
         Restaurante restaurante = mock(Restaurante.class);
         HorarioDeFuncionamento horarioDeFuncionamento = mock(HorarioDeFuncionamento.class);
@@ -60,7 +60,7 @@ class FabricaReservaTest {
     }
 
     @Test
-    void deveAlterarDataUtilizandoFabricaReserva() {
+    public void deveAlterarDataUtilizandoFabricaReserva() {
         FabricaReserva fabrica = new FabricaReserva();
 
         LocalDate dataReserva = LocalDate.of(2024,9,24);
@@ -88,7 +88,7 @@ class FabricaReservaTest {
     }
 
     @Test
-    void deveAlterarQuantidadeDaReserva() {
+    public void deveAlterarQuantidadeDaReserva() {
         FabricaReserva fabrica = new FabricaReserva();
 
         Cliente cliente = mock(Cliente.class);
@@ -112,7 +112,7 @@ class FabricaReservaTest {
     }
 
     @Test
-    void deveCancelarReserva() {
+    public void deveCancelarReserva() {
         FabricaReserva fabrica = new FabricaReserva();
 
         Cliente cliente = mock(Cliente.class);

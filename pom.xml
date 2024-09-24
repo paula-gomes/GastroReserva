@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.grupo19</groupId>
-	<artifactId>GastroReserva</artifactId>
+	<artifactId>gastroreserva</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GastroReserva</name>
 	<description>Projeto para o terceiro bimestre da FIAP</description>

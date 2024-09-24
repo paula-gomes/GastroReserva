@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 
- class
+public class
 RestauranteTest {
 
     @Test
-     void todosCamposEstaoPresentes() {
+    public void todosCamposEstaoPresentes() {
         Restaurante restaurante = new Restaurante();
         restaurante.setNome("Restaurante Exemplo");
         restaurante.setEndereco(new Endereco());
@@ -31,7 +31,7 @@ RestauranteTest {
     }
 
     @Test
-     void numeroDeCadeirasOcupadasEValido() {
+    public void numeroDeCadeirasOcupadasEValido() {
         Restaurante restaurante = new Restaurante("Restaurante Exemplo", new Endereco(), "Italiana", new HorarioDeFuncionamento(LocalTime.of(8,0), LocalTime.of(22,0)), 100);
         restaurante.ocuparCadeiras(10);
         Assertions.assertEquals(90, restaurante.getCadeirasDisponiveis(), "Cadeiras Disponiveis deve ser 90 apos ocupar 10 cadeiras");

@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
- class RealizarReservaInterfaceTest {
+public class RealizarReservaInterfaceTest {
     @Mock
     private RealizarReservaInterface realizarReservaInterface;
 
@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-     void deveRealizarReservaComSucesso() {
+    public void deveRealizarReservaComSucesso() {
         Reserva reserva = new Reserva();
         reserva.setData(LocalDate.of(2024, 9, 15));
         reserva.setHorario(LocalTime.of(18, 0));

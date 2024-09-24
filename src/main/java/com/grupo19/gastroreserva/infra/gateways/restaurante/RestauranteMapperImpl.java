@@ -6,9 +6,9 @@ import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity
 import org.springframework.stereotype.Component;
 
 @Component
-public class RestauranteMapperImpl implements RestauranteMapper {
+public class RestauranteMapperImpl  {
 
-    @Override
+
     public RestauranteEntity toEntity(Restaurante restaurante) {
         if (restaurante == null) {
             return null;
@@ -25,7 +25,7 @@ public class RestauranteMapperImpl implements RestauranteMapper {
         return entity;
     }
 
-    @Override
+
     public Restaurante toDomain(RestauranteEntity entity) {
         if (entity == null) {
             return null;

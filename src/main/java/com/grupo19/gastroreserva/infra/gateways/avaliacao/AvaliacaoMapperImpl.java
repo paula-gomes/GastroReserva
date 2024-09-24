@@ -5,9 +5,9 @@ import com.grupo19.gastroreserva.infra.persistence.avaliacao.AvaliacaoEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AvaliacaoMapperImpl implements AvaliacaoMapper {
+public class AvaliacaoMapperImpl  {
 
-    @Override
+
     public AvaliacaoEntity toEntity(Avaliacao avaliacao) {
         return new AvaliacaoEntity(avaliacao.getCliente(),
                 avaliacao.getRestaurante(),
@@ -16,7 +16,7 @@ public class AvaliacaoMapperImpl implements AvaliacaoMapper {
                 avaliacao.getData());
     }
 
-    @Override
+
     public Avaliacao toDomain(AvaliacaoEntity entity) {
         return new Avaliacao(entity.getCliente(),
                 entity.getRestaurante(),

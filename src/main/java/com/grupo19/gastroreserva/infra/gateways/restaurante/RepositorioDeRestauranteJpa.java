@@ -7,7 +7,6 @@ import com.grupo19.gastroreserva.application.gateways.restaurante.ListarRestaura
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteRepository;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,9 +17,9 @@ public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteIn
         CadastrarRestauranteInterface, ExcluirRestauranteInterface, ListarRestaurantesInterface {
 
     private final RestauranteRepository restauranteRepository;
-    private final RestauranteMapper mapper;
+    private final RestauranteMapperImpl mapper;
 
-    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapper mapper) {
+    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapperImpl mapper) {
         this.restauranteRepository = restauranteRepository;
         this.mapper = mapper;
     }

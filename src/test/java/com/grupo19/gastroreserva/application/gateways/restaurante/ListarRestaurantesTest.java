@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class ListarRestaurantesTest {
+public class ListarRestaurantesTest {
     @Mock
     private ListarRestaurantesInterface listarRestaurantesInterface;
 
@@ -36,7 +36,7 @@ class ListarRestaurantesTest {
     }
 
     @Test
-    void deveListarRestaurantesComSucesso() {
+    public void deveListarRestaurantesComSucesso() {
         Restaurante restaurante1 = new Restaurante();
         restaurante1.setNome("Restaurante A");
 
