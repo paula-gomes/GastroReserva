@@ -33,11 +33,10 @@ public class RestauranteMapperImpl implements RestauranteMapper {
 
         Restaurante restaurante = new Restaurante();
         restaurante.setNome(entity.getNome());
-        restaurante.setEndereco(entity.getEndereco());
-        restaurante.setTipoDeCozinha(entity.getTipoDeCozinha());
-        restaurante.setHorarioDeFuncionamento(entity.getHorarioDeFuncionamento());
         restaurante.setCapacidade(entity.getCapacidade());
-        restaurante.setCadeirasDisponiveis(entity.getCadeirasDisponiveis());
+        if (entity.getEndereco() != null) {
+            restaurante.setEndereco(entity.getEndereco());
+        }
 
         return restaurante;
     }

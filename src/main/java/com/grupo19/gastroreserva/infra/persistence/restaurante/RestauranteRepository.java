@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface RestauranteRepository {
-    Restaurante save(RestauranteEntity entity);
+    RestauranteEntity save(RestauranteEntity entity);
     Optional<RestauranteEntity> findById(Long id);
     List<RestauranteEntity> findAll();
     void delete(RestauranteEntity entity);

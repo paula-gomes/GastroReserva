@@ -1,7 +1,10 @@
 package com.grupo19.gastroreserva.domain;
 
+import jakarta.persistence.Embeddable;
+
 import java.time.LocalTime;
 
+@Embeddable
 public class HorarioDeFuncionamento {
     private LocalTime horaAbertura;
     private LocalTime horaFechamento;

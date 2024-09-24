@@ -2,12 +2,15 @@ package com.grupo19.gastroreserva.infra.persistence.restaurante;
 
 import com.grupo19.gastroreserva.domain.Endereco;
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
+@Entity
 public class RestauranteEntity {
 
-
+    @Id
     private Long id;
     private String nome;
     private Endereco endereco;

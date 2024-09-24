@@ -14,7 +14,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
 
 
     @Override
-    public Restaurante save(RestauranteEntity entity) {
+    public RestauranteEntity save(RestauranteEntity entity) {
         return null;
     }
 
