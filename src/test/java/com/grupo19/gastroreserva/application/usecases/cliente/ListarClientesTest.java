@@ -9,9 +9,9 @@ import org.mockito.Mockito;
 import java.util.Arrays;
 import java.util.List;
 
-class ListarClientesTest {
+public class ListarClientesTest {
     @Test
-    void deveListarClientes() {
+    public void deveListarClientes() {
         ListarClientesInterface listarClientesInterface = Mockito.mock(ListarClientesInterface.class);
         List<Cliente> expectedClientes = Arrays.asList(new Cliente("12345678900", "John Doe", "john@example.com"));
         Mockito.when(listarClientesInterface.listarClientes()).thenReturn(expectedClientes);
@@ -23,7 +23,7 @@ class ListarClientesTest {
     }
 
     @Test
-    void listarClientesNaoPodeSerNulo() {
+    public void listarClientesNaoPodeSerNulo() {
         ListarClientesInterface listarClientesInterface = Mockito.mock(ListarClientesInterface.class);
         Mockito.when(listarClientesInterface.listarClientes()).thenReturn(null);
 

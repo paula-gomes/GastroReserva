@@ -11,10 +11,10 @@ import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class ClienteTest {
+public class ClienteTest {
 
     @Test
-    void deveCriarCliente() {
+    public void deveCriarCliente() {
         Cliente cliente = new Cliente("12345678910", "nomeCliente", "email@teste.com");
 
         assertNotNull(cliente);
@@ -24,7 +24,7 @@ class ClienteTest {
     }
 
     @Test
-    void cpfNaoDeveSerNuloOuVazio() {
+    public void cpfNaoDeveSerNuloOuVazio() {
         String mensagemEsperada = "Campo Obrigatório está nulo ou vazio";
 
         Exception exceptionNulo = assertThrows(IllegalArgumentException.class, () -> {
@@ -39,7 +39,7 @@ class ClienteTest {
     }
 
     @Test
-    void nomeNaoDeveSerNuloOuVazio() {
+    public void nomeNaoDeveSerNuloOuVazio() {
         String mensagemEsperada = "Campo Obrigatório está nulo ou vazio";
 
         Exception exceptionNulo = assertThrows(IllegalArgumentException.class, () -> {
@@ -54,7 +54,7 @@ class ClienteTest {
     }
 
     @Test
-    void emailNaoDeveSerNuloOuVazio() {
+    public void emailNaoDeveSerNuloOuVazio() {
         String mensagemEsperada = "Campo Obrigatório está nulo ou vazio";
 
         Exception exceptionNulo = assertThrows(IllegalArgumentException.class, () -> {
@@ -69,7 +69,7 @@ class ClienteTest {
     }
 
     @Test
-    void deveRetornarListaDeRestaurante() {
+    public void deveRetornarListaDeRestaurante() {
         Cliente cliente = new Cliente("12345678900", "John Doe", "john.doe@example.com");
         Restaurante restaurante1 = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
         Restaurante restaurante2 = new Restaurante("Restaurante B", new Endereco(), "Japonesa", new HorarioDeFuncionamento(), 30);

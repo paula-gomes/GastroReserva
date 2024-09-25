@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
 
-class CancelarReservaInterfaceTest {
+public class CancelarReservaInterfaceTest {
     @Mock
     private CancelarReservaInterface cancelarReservaInterface;
 
@@ -28,7 +28,7 @@ class CancelarReservaInterfaceTest {
     }
 
     @Test
-    void deveChamarCancelarReserva() {
+    public void deveChamarCancelarReserva() {
         Reserva reserva = new Reserva();
 
         cancelarReservaInterface.cancelarReserva(reserva);

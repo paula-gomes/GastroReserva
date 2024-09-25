@@ -7,7 +7,6 @@ import com.grupo19.gastroreserva.application.gateways.restaurante.ListarRestaura
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteRepository;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

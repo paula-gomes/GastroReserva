@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class AlterarEmailClienteInterfaceTest {
+public class AlterarEmailClienteInterfaceTest {
     @Mock
     private AlterarEmailClienteInterface alterarEmailClienteInterface;
 
@@ -19,7 +19,7 @@ class AlterarEmailClienteInterfaceTest {
     }
 
     @Test
-    void deveAlterarEmailCliente() {
+    public void deveAlterarEmailCliente() {
         Cliente cliente = new Cliente();
         cliente.setEmail("cliente@teste.com");
 

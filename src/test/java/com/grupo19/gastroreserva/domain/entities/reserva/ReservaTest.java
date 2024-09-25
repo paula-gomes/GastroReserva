@@ -12,10 +12,10 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
- class ReservaTest {
+public class ReservaTest {
 
     @Test
-     void deveRealizarReserva() {
+    public void deveRealizarReserva() {
 
         Cliente cliente = new Cliente("123456789120", "nomeCliente", "email@teste.com");
         Endereco endereco = new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP");

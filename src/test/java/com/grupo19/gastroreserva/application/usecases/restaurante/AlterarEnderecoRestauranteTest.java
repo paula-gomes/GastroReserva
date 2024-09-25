@@ -20,7 +20,7 @@ class AlterarEnderecoRestauranteTest {
         Mockito.when(mockInterface.alterarEnderecoRestaurante(restaurante)).thenReturn(restaurante);
         AlterarEnderecoRestaurante alterarEnderecoRestaurante = new AlterarEnderecoRestaurante(mockInterface);
 
-        Restaurante resultado = alterarEnderecoRestaurante.alterarRestaurante(restaurante);
+        Restaurante resultado = alterarEnderecoRestaurante.alterarEnderecoRestaurante(restaurante);
 
         assertNotNull(resultado);
         assertEquals(novoEndereco, resultado.getEndereco());
