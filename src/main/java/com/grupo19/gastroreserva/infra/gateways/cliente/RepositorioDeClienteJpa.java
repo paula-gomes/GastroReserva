@@ -7,12 +7,10 @@ import com.grupo19.gastroreserva.application.gateways.cliente.ListarClientesInte
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
 public class RepositorioDeClienteJpa implements AlterarEmailClienteInterface, CadastrarClienteInterface, ExcluirClienteInterface, ListarClientesInterface {
 
     private final ClienteRepository clienteRepository;
@@ -22,7 +20,6 @@ public class RepositorioDeClienteJpa implements AlterarEmailClienteInterface, Ca
         this.clienteRepository = clienteRepository;
         this.mapper = mapper;
     }
-
 
     @Override
     public Cliente alterarEmailCliente(Cliente cliente) {

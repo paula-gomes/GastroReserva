@@ -3,19 +3,18 @@ package com.grupo19.gastroreserva.application.usecases.avaliacao;
 import com.grupo19.gastroreserva.application.gateways.avaliacao.ListarAvaliacoesInterface;
 import com.grupo19.gastroreserva.domain.entities.avaliacao.Avaliacao;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
-import com.grupo19.gastroreserva.infra.gateways.avaliacao.RepositorioDeAvaliacaoJpa;
 
 import java.util.List;
 
 public class ListarAvaliacoes {
 
-    private final RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa;
+    private final ListarAvaliacoesInterface listarAvaliacoesInterface;
 
-    public ListarAvaliacoes(RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa) {
-        this.repositorioDeAvaliacaoJpa = repositorioDeAvaliacaoJpa;
+    public ListarAvaliacoes(ListarAvaliacoesInterface listarAvaliacoesInterface) {
+        this.listarAvaliacoesInterface = listarAvaliacoesInterface;
     }
 
     public List<Avaliacao> listarAvaliacoes(Cliente cliente) {
-        return repositorioDeAvaliacaoJpa.listarAvaliacoes(cliente);
+        return listarAvaliacoesInterface.listarAvaliacoes(cliente);
     }
 }

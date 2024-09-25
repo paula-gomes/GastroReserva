@@ -5,16 +5,15 @@ import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.infra.gateways.cliente.RepositorioDeClienteJpa;
 import org.springframework.stereotype.Service;
 
-@Service
 public class AlterarEmailCliente implements AlterarEmailClienteInterface{
 
-    private final RepositorioDeClienteJpa repositorioDeClienteJpa;
+    private final AlterarEmailClienteInterface alterarEmailClienteInterface;
 
-    public AlterarEmailCliente(RepositorioDeClienteJpa repositorioDeClienteJpa) {
-        this.repositorioDeClienteJpa = repositorioDeClienteJpa;
+    public AlterarEmailCliente(AlterarEmailClienteInterface alterarEmailClienteInterface) {
+        this.alterarEmailClienteInterface = alterarEmailClienteInterface;
     }
 
     public Cliente alterarEmailCliente(Cliente cliente) {
-        return repositorioDeClienteJpa.alterarEmailCliente(cliente);
+        return alterarEmailClienteInterface.alterarEmailCliente(cliente);
     }
 }

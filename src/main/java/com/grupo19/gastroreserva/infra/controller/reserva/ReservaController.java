@@ -84,7 +84,7 @@ public class ReservaController {
     }
 
     @DeleteMapping
-    public ReservaDTO excluirReserva(@RequestBody ReservaDTO reservaDTO){
+    public void excluirReserva(@RequestBody ReservaDTO reservaDTO){
         cancelarReserva.cancelarReserva(new Reserva(reservaDTO.cliente(),
                 reservaDTO.restaurante(),
                 reservaDTO.horario(),

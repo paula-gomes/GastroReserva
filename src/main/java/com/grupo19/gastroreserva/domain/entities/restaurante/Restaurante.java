@@ -13,8 +13,8 @@ public class Restaurante {
 
     public Restaurante(String nome, Endereco endereco, String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento, Integer capacidade) {
 
-        if(capacidade < 0){
-            throw new IllegalArgumentException("Capacidade negativa não aceita");
+        if(capacidade <= 0){
+            throw new IllegalArgumentException("Capacidade negativa ou igual a zero não pode ser aceita");
         }
 
         this.nome = nome;

@@ -17,6 +17,10 @@ public class Cliente {
             throw new IllegalArgumentException("Campo Obrigatório está nulo ou vazio");
         }
 
+        if(!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")){
+            throw new IllegalArgumentException("CPF no formato inválido");
+        }
+
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;

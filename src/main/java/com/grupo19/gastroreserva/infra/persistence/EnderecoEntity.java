@@ -1,8 +1,10 @@
 package com.grupo19.gastroreserva.infra.persistence;
 
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
+@Table(name = "endereco")
 public class EnderecoEntity {
 
     private String cep;
