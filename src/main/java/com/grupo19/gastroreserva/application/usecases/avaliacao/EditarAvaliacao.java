@@ -2,16 +2,17 @@ package com.grupo19.gastroreserva.application.usecases.avaliacao;
 
 import com.grupo19.gastroreserva.application.gateways.avaliacao.EditarAvaliacaoInterface;
 import com.grupo19.gastroreserva.domain.entities.avaliacao.Avaliacao;
+import com.grupo19.gastroreserva.infra.gateways.avaliacao.RepositorioDeAvaliacaoJpa;
 
 public class EditarAvaliacao {
 
-    private final EditarAvaliacaoInterface editarAvaliacaoInterface;
+    private final RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa;
 
-    public EditarAvaliacao(EditarAvaliacaoInterface editarAvaliacaoInterface) {
-        this.editarAvaliacaoInterface = editarAvaliacaoInterface;
+    public EditarAvaliacao(RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa) {
+        this.repositorioDeAvaliacaoJpa = repositorioDeAvaliacaoJpa;
     }
 
     public Avaliacao editarAvaliacao(Avaliacao avaliacao) {
-        return editarAvaliacaoInterface.editarAvaliacao(avaliacao);
+        return repositorioDeAvaliacaoJpa.editarAvaliacao(avaliacao);
     }
 }

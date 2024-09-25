@@ -6,7 +6,6 @@ import com.grupo19.gastroreserva.application.usecases.cliente.ExcluirCliente;
 import com.grupo19.gastroreserva.application.usecases.cliente.ListarClientes;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import org.springframework.web.bind.annotation.*;
-import com.grupo19.gastroreserva.infra.controller.cliente.ClienteDTO;
 
 import java.util.ArrayList;
 import java.util.List;

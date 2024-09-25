@@ -17,9 +17,9 @@ public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteIn
         CadastrarRestauranteInterface, ExcluirRestauranteInterface, ListarRestaurantesInterface {
 
     private final RestauranteRepository restauranteRepository;
-    private final RestauranteMapperImpl mapper;
+    private final RestauranteMapper mapper;
 
-    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapperImpl mapper) {
+    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapper mapper) {
         this.restauranteRepository = restauranteRepository;
         this.mapper = mapper;
     }
