@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GastroReserva</a> &gt; <a href="index.source.html" class="el_package">com.grupo19.gastroreserva.domain.entities.cliente</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">package com.grupo19.gastroreserva.domain.entities.cliente;
+
+import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cliente {
+    private String cpf;
+    private String nome;
+    private String email;
+    private List&lt;Restaurante&gt; restaurantes;
+
+<span class="fc" id="L14">    public Cliente(String cpf, String nome, String email, List&lt;Restaurante&gt; restaurantes) {</span>
+
+<span class="fc bfc" id="L16" title="All 12 branches covered.">        if(cpf == null || cpf.isBlank() || nome == null || nome.isBlank() || email == null || email.isBlank()){</span>
+<span class="fc" id="L17">            throw new IllegalArgumentException(&quot;Campo Obrigatório está nulo ou vazio&quot;);</span>
+        }
+
+<span class="fc" id="L20">        this.cpf = cpf;</span>
+<span class="fc" id="L21">        this.nome = nome;</span>
+<span class="fc" id="L22">        this.email = email;</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        this.restaurantes = (restaurantes != null) ? restaurantes : new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L24">    }</span>
+
+<span class="fc" id="L26">    public Cliente() {</span>
+<span class="fc" id="L27">        this.restaurantes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">    }</span>
+
+    public Cliente(String cpf, String nome, String email) {
+<span class="fc" id="L31">        this(cpf, nome, email, new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L32">    }</span>
+
+
+
+    public String getCpf() {
+<span class="fc" id="L37">        return cpf;</span>
+    }
+
+    public void setCpf(String cpf) {
+<span class="nc" id="L41">        this.cpf = cpf;</span>
+<span class="nc" id="L42">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L45">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="fc" id="L49">        this.nome = nome;</span>
+<span class="fc" id="L50">    }</span>
+
+    public String getEmail() {
+<span class="fc" id="L53">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="fc" id="L57">        this.email = email;</span>
+<span class="fc" id="L58">    }</span>
+
+    public List&lt;Restaurante&gt; getRestaurantes() {
+<span class="fc" id="L61">        return restaurantes;</span>
+    }
+
+    public void addRestaurante(Restaurante restaurante) {
+<span class="fc" id="L65">        this.restaurantes.add(restaurante);</span>
+<span class="fc" id="L66">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

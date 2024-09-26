@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RepositorioDeRestauranteJpa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GastroReserva</a> &gt; <a href="index.source.html" class="el_package">com.grupo19.gastroreserva.infra.gateways.restaurante</a> &gt; <span class="el_source">RepositorioDeRestauranteJpa.java</span></div><h1>RepositorioDeRestauranteJpa.java</h1><pre class="source lang-java linenums">package com.grupo19.gastroreserva.infra.gateways.restaurante;
+
+import com.grupo19.gastroreserva.application.gateways.restaurante.AlterarEnderecoRestauranteInterface;
+import com.grupo19.gastroreserva.application.gateways.restaurante.CadastrarRestauranteInterface;
+import com.grupo19.gastroreserva.application.gateways.restaurante.ExcluirRestauranteInterface;
+import com.grupo19.gastroreserva.application.gateways.restaurante.ListarRestaurantesInterface;
+import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
+import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteRepository;
+
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Repository
+public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteInterface,
+        CadastrarRestauranteInterface, ExcluirRestauranteInterface, ListarRestaurantesInterface {
+
+    private final RestauranteRepository restauranteRepository;
+    private final RestauranteMapper mapper;
+
+<span class="fc" id="L23">    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapper mapper) {</span>
+<span class="fc" id="L24">        this.restauranteRepository = restauranteRepository;</span>
+<span class="fc" id="L25">        this.mapper = mapper;</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public Restaurante alterarEnderecoRestaurante(Restaurante restaurante) {
+<span class="nc" id="L30">        RestauranteEntity entity = mapper.toEntity(restaurante);</span>
+<span class="nc" id="L31">        restauranteRepository.save(entity);</span>
+<span class="nc" id="L32">        return mapper.toDomain(entity);</span>
+    }
+
+    @Override
+    public Restaurante cadastrarRestaurante(Restaurante restaurante) {
+<span class="nc" id="L37">        RestauranteEntity entity = mapper.toEntity(restaurante);</span>
+<span class="nc" id="L38">        restauranteRepository.save(entity);</span>
+<span class="nc" id="L39">        return mapper.toDomain(entity);</span>
+    }
+
+    @Override
+    public void excluirRestaurante(Restaurante restaurante) {
+<span class="nc" id="L44">        RestauranteEntity entity = mapper.toEntity(restaurante);</span>
+<span class="nc" id="L45">        restauranteRepository.delete(entity);</span>
+<span class="nc" id="L46">    }</span>
+
+    @Override
+    public List&lt;Restaurante&gt; listarRestaurantes() {
+<span class="nc" id="L50">        return restauranteRepository.findAll()</span>
+<span class="nc" id="L51">                .stream()</span>
+<span class="nc" id="L52">                .map(mapper::toDomain)</span>
+<span class="nc" id="L53">                .collect(Collectors.toList());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
