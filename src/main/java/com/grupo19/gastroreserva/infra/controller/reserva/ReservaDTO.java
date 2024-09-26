@@ -1,14 +1,14 @@
 package com.grupo19.gastroreserva.infra.controller.reserva;
 
-import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
-import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.controller.cliente.ClienteDTO;
+import com.grupo19.gastroreserva.infra.controller.restaurante.RestauranteDTO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public record ReservaDTO(
-        Cliente cliente,
-        Restaurante restaurante,
+        ClienteDTO cliente,
+        RestauranteDTO restaurante,
         LocalTime horario,
         LocalDate data,
         Integer quantidade
