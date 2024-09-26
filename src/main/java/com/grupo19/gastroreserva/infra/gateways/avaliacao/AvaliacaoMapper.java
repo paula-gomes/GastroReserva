@@ -4,9 +4,7 @@ import com.grupo19.gastroreserva.domain.entities.avaliacao.Avaliacao;
 import com.grupo19.gastroreserva.infra.persistence.avaliacao.AvaliacaoEntity;
 import org.springframework.stereotype.Component;
 
-@Component
 public class AvaliacaoMapper {
-
 
     public AvaliacaoEntity toEntity(Avaliacao avaliacao) {
         return new AvaliacaoEntity(avaliacao.getCliente(),

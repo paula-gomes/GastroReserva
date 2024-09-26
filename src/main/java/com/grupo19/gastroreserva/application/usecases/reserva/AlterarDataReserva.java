@@ -2,17 +2,16 @@ package com.grupo19.gastroreserva.application.usecases.reserva;
 
 import com.grupo19.gastroreserva.application.gateways.reserva.AlterarDataReservaInterface;
 import com.grupo19.gastroreserva.domain.entities.reserva.Reserva;
-import com.grupo19.gastroreserva.infra.gateways.reserva.RepositorioDeReservaJpa;
 
 public class AlterarDataReserva {
 
-    private final RepositorioDeReservaJpa repositorioDeReservaJpa;
+    private final AlterarDataReservaInterface alterarDataReservaInterface;
 
-    public AlterarDataReserva(RepositorioDeReservaJpa repositorioDeReservaJpa) {
-        this.repositorioDeReservaJpa = repositorioDeReservaJpa;
+    public AlterarDataReserva(AlterarDataReservaInterface alterarDataReservaInterface) {
+        this.alterarDataReservaInterface = alterarDataReservaInterface;
     }
 
     public Reserva alterarDataReserva(Reserva reserva) {
-        return repositorioDeReservaJpa.alterarDataReserva(reserva);
+        return alterarDataReservaInterface.alterarDataReserva(reserva);
     }
 }

@@ -6,13 +6,13 @@ import com.grupo19.gastroreserva.infra.gateways.avaliacao.RepositorioDeAvaliacao
 
 public class EditarAvaliacao {
 
-    private final RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa;
+    private final EditarAvaliacaoInterface editarAvaliacaoInterface;
 
-    public EditarAvaliacao(RepositorioDeAvaliacaoJpa repositorioDeAvaliacaoJpa) {
-        this.repositorioDeAvaliacaoJpa = repositorioDeAvaliacaoJpa;
+    public EditarAvaliacao(EditarAvaliacaoInterface editarAvaliacaoInterface) {
+        this.editarAvaliacaoInterface = editarAvaliacaoInterface;
     }
 
     public Avaliacao editarAvaliacao(Avaliacao avaliacao) {
-        return repositorioDeAvaliacaoJpa.editarAvaliacao(avaliacao);
+        return editarAvaliacaoInterface.editarAvaliacao(avaliacao);
     }
 }

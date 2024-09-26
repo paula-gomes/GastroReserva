@@ -2,15 +2,16 @@ package com.grupo19.gastroreserva.infra.persistence.restaurante;
 
 import com.grupo19.gastroreserva.domain.Endereco;
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "restaurante")
 public class RestauranteEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Endereco endereco;
@@ -19,8 +20,7 @@ public class RestauranteEntity {
     private Integer capacidade;
     private Integer cadeirasDisponiveis;
 
-    public RestauranteEntity() {
-    }
+    public RestauranteEntity() {}
 
     public RestauranteEntity(String nome, Endereco endereco,
                              String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento,

@@ -35,7 +35,8 @@ public class RepositorioDeReservaJpa implements AlterarDataReservaInterface, Lis
 
     @Override
     public void cancelarReserva(Reserva reserva) {
-        reservaRepository.delete(reserva.getId());
+        ReservaEntity entity = reservaMapper.toEntity(reserva);
+        reservaRepository.delete(entity);
     }
 
     @Override

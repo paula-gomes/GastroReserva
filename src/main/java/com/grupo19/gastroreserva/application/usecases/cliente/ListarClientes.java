@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public class ListarClientes {
 
-    private final RepositorioDeClienteJpa repositorioDeClienteJpa;
+    private final ListarClientesInterface listarClientesInterface;
 
-    public ListarClientes(RepositorioDeClienteJpa repositorioDeClienteJpa) {
-        this.repositorioDeClienteJpa = repositorioDeClienteJpa;
+    public ListarClientes(ListarClientesInterface listarClientesInterface) {
+        this.listarClientesInterface = listarClientesInterface;
     }
 
     public List<Cliente> listarCliente(){
-        return repositorioDeClienteJpa.listarClientes();
+        return listarClientesInterface.listarClientes();
     }
 }

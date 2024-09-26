@@ -5,16 +5,16 @@ import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.infra.gateways.cliente.RepositorioDeClienteJpa;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public class ExcluirCliente implements ExcluirClienteInterface {
 
-    private final RepositorioDeClienteJpa repositorioDeClienteJpa;
+    private final ExcluirClienteInterface excluirClienteInterface;
 
-    public ExcluirCliente(RepositorioDeClienteJpa repositorioDeClienteJpa) {
-        this.repositorioDeClienteJpa = repositorioDeClienteJpa;
+    public ExcluirCliente(ExcluirClienteInterface excluirClienteInterface) {
+        this.excluirClienteInterface = excluirClienteInterface;
     }
 
     public void excluirCliente(Cliente cliente) {
-       repositorioDeClienteJpa.excluirCliente(cliente);
+       excluirClienteInterface.excluirCliente(cliente);
     }
 }
