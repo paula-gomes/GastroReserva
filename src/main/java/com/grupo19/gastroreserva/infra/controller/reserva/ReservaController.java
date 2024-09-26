@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reserva")
+@RequestMapping("/reservas")
 public class ReservaController {
 
     private final AlterarDataReserva alterarDataReserva;

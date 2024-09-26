@@ -1,28 +1,35 @@
 package com.grupo19.gastroreserva.infra.persistence.cliente;
 
-import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
-@Data
 @Entity
-@Table(name = "cliente")
-public class ClienteEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Cliente")
+public class ClienteEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "cpf")
     private String cpf;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "email")
     private String email;
 
-    public ClienteEntity() {}
+    @ManyToMany
+    @JoinTable(name = "cliente_restaurante",
+    joinColumns = @JoinColumn(name = "cliente_cpf"),
+    inverseJoinColumns = @JoinColumn(name = "restaurante_id"))
+    private List<RestauranteEntity> restaurante;
 
-    public ClienteEntity(String cpf, String nome, String email) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.email = email;
-    }
 }
+

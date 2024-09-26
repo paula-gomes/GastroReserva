@@ -1,9 +1,5 @@
 package com.grupo19.gastroreserva.config;
 
-import com.grupo19.gastroreserva.application.gateways.avaliacao.EditarAvaliacaoInterface;
-import com.grupo19.gastroreserva.application.gateways.avaliacao.ExcluirAvaliacaoInterface;
-import com.grupo19.gastroreserva.application.gateways.avaliacao.ListarAvaliacoesInterface;
-import com.grupo19.gastroreserva.application.gateways.avaliacao.RealizarAvaliacaoInterface;
 import com.grupo19.gastroreserva.application.usecases.avaliacao.EditarAvaliacao;
 import com.grupo19.gastroreserva.application.usecases.avaliacao.ExcluirAvaliacao;
 import com.grupo19.gastroreserva.application.usecases.avaliacao.ListarAvaliacoes;
@@ -19,22 +15,22 @@ import org.springframework.context.annotation.Configuration;
 public class AvaliacaoConfig {
 
     @Bean
-    EditarAvaliacao editarAvaliacao(EditarAvaliacaoInterface editarAvaliacaoInterface){
+    EditarAvaliacao editarAvaliacao(RepositorioDeAvaliacaoJpa editarAvaliacaoInterface){
         return new EditarAvaliacao(editarAvaliacaoInterface);
     };
 
     @Bean
-    ExcluirAvaliacao excluirAvaliacao(ExcluirAvaliacaoInterface excluirAvaliacaoInterface){
+    ExcluirAvaliacao excluirAvaliacao(RepositorioDeAvaliacaoJpa excluirAvaliacaoInterface){
         return new ExcluirAvaliacao(excluirAvaliacaoInterface);
     }
 
     @Bean
-    ListarAvaliacoes listarAvaliacoes(ListarAvaliacoesInterface listarAvaliacoesInterface){
+    ListarAvaliacoes listarAvaliacoes(RepositorioDeAvaliacaoJpa listarAvaliacoesInterface){
         return new ListarAvaliacoes(listarAvaliacoesInterface);
     }
 
     @Bean
-    RealizarAvaliacao realizarAvaliacao(RealizarAvaliacaoInterface realizarAvaliacaoInterface){
+    RealizarAvaliacao realizarAvaliacao(RepositorioDeAvaliacaoJpa realizarAvaliacaoInterface){
         return new RealizarAvaliacao(realizarAvaliacaoInterface);
     }
 
