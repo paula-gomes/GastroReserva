@@ -1,29 +1,46 @@
 package com.grupo19.gastroreserva.infra.persistence.restaurante;
 
-import com.grupo19.gastroreserva.domain.Endereco;
-import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
+import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.io.Serializable;
+
 @Entity
-@Table(name = "restaurante")
-public class RestauranteEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Restaurante")
+public class RestauranteEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
-    private Endereco endereco;
+
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private EnderecoEntity endereco;
+
+    @Column(name = "tipodecozinha")
     private String tipoDeCozinha;
-    private HorarioDeFuncionamento horarioDeFuncionamento;
+
+    @ManyToOne
+    @JoinColumn(name = "horariodefuncionamento_id")
+    private HorarioDeFuncionamentoEntity horarioDeFuncionamento;
+
+    @Column(name = "capacidade")
     private Integer capacidade;
+
+    @Column(name = "cadeirasdisponiveis")
     private Integer cadeirasDisponiveis;
 
-    public RestauranteEntity() {}
-
-    public RestauranteEntity(String nome, Endereco endereco,
-                             String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento,
+    public RestauranteEntity(String nome, EnderecoEntity endereco,
+                             String tipoDeCozinha, HorarioDeFuncionamentoEntity horarioDeFuncionamento,
                              Integer capacidade, Integer cadeirasDisponiveis) {
         this.nome = nome;
         this.endereco = endereco;

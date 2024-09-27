@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurante")
+@RequestMapping("/restaurantes")
 public class RestauranteController {
 
     private final ListarRestaurantes listarRestaurantes;

@@ -19,7 +19,10 @@ public class ClienteController {
     private final ExcluirCliente excluirCliente;
     private final ListarClientes listarClientes;
 
-    public ClienteController(AlterarEmailCliente alterarEmailCliente, CadastrarCliente cadastrarCliente, ExcluirCliente excluirCliente, ListarClientes listarClientes) {
+    public ClienteController(AlterarEmailCliente alterarEmailCliente,
+                             CadastrarCliente cadastrarCliente,
+                             ExcluirCliente excluirCliente,
+                             ListarClientes listarClientes) {
         this.alterarEmailCliente = alterarEmailCliente;
         this.cadastrarCliente = cadastrarCliente;
         this.excluirCliente = excluirCliente;

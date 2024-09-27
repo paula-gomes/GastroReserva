@@ -8,6 +8,7 @@ import com.grupo19.gastroreserva.application.usecases.cliente.AlterarEmailClient
 import com.grupo19.gastroreserva.application.usecases.cliente.CadastrarCliente;
 import com.grupo19.gastroreserva.application.usecases.cliente.ExcluirCliente;
 import com.grupo19.gastroreserva.application.usecases.cliente.ListarClientes;
+import com.grupo19.gastroreserva.infra.controller.cliente.ClienteController;
 import com.grupo19.gastroreserva.infra.gateways.cliente.ClienteMapper;
 import com.grupo19.gastroreserva.infra.gateways.cliente.RepositorioDeClienteJpa;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteRepository;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class UsuarioConfig {
+public class ClienteConfig {
 
     @Bean
     AlterarEmailCliente alterarEmailCliente(AlterarEmailClienteInterface alterarEmailCliente){
@@ -44,4 +45,5 @@ public class UsuarioConfig {
 
     @Bean
     ClienteMapper criaClienteMapper(){ return new ClienteMapper(); }
+
 }
