@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class CadastrarClienteInterfaceTest {
+public class CadastrarClienteInterfaceTest {
     @Mock
     private CadastrarClienteInterface cadastrarClienteInterface;
 
@@ -29,7 +29,7 @@ class CadastrarClienteInterfaceTest {
     }
 
     @Test
-    void deveCadastrarClienteComSucesso() {
+    public void deveCadastrarClienteComSucesso() {
         Cliente cliente = new Cliente();
         cliente.setNome("ClienteNome");
         cliente.setEmail("cliente@teste.com");

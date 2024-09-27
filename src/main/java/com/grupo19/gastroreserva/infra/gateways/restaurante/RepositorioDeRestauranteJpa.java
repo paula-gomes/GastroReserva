@@ -5,43 +5,55 @@ import com.grupo19.gastroreserva.application.gateways.restaurante.CadastrarResta
 import com.grupo19.gastroreserva.application.gateways.restaurante.ExcluirRestauranteInterface;
 import com.grupo19.gastroreserva.application.gateways.restaurante.ListarRestaurantesInterface;
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.gateways.EnderecoMapper;
+import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
+import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoRepository;
+import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoRepository;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteRepository;
-
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository
 public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteInterface,
         CadastrarRestauranteInterface, ExcluirRestauranteInterface, ListarRestaurantesInterface {
 
     private final RestauranteRepository restauranteRepository;
-    private final RestauranteMapper mapper;
+    private final EnderecoRepository enderecoRepository;
+    private final HorarioDeFuncionamentoRepository horarioDeFuncionamentoRepository;
+    private final RestauranteMapper restauranteMapper;
 
-    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository, RestauranteMapper mapper) {
+    public RepositorioDeRestauranteJpa(RestauranteRepository restauranteRepository,
+                                       EnderecoRepository enderecoRepository,
+                                       RestauranteMapper restauranteMapper,
+                                       HorarioDeFuncionamentoRepository horarioDeFuncionamentoRepository) {
         this.restauranteRepository = restauranteRepository;
-        this.mapper = mapper;
+        this.enderecoRepository = enderecoRepository;
+        this.restauranteMapper = restauranteMapper;
+        this.horarioDeFuncionamentoRepository = horarioDeFuncionamentoRepository;
     }
 
     @Override
     public Restaurante alterarEnderecoRestaurante(Restaurante restaurante) {
-        RestauranteEntity entity = mapper.toEntity(restaurante);
+        RestauranteEntity entity = restauranteMapper.toEntity(restaurante);
+        enderecoRepository.save(entity.getEndereco());
+        horarioDeFuncionamentoRepository.save(entity.getHorarioDeFuncionamento());
         restauranteRepository.save(entity);
-        return mapper.toDomain(entity);
+        return restauranteMapper.toDomain(entity);
     }
 
     @Override
     public Restaurante cadastrarRestaurante(Restaurante restaurante) {
-        RestauranteEntity entity = mapper.toEntity(restaurante);
+        RestauranteEntity entity = restauranteMapper.toEntity(restaurante);
+        enderecoRepository.save(entity.getEndereco());
+        horarioDeFuncionamentoRepository.save(entity.getHorarioDeFuncionamento());
         restauranteRepository.save(entity);
-        return mapper.toDomain(entity);
+        return restauranteMapper.toDomain(entity);
     }
 
     @Override
     public void excluirRestaurante(Restaurante restaurante) {
-        RestauranteEntity entity = mapper.toEntity(restaurante);
+        RestauranteEntity entity = restauranteMapper.toEntity(restaurante);
         restauranteRepository.delete(entity);
     }
 
@@ -49,7 +61,7 @@ public class RepositorioDeRestauranteJpa implements AlterarEnderecoRestauranteIn
     public List<Restaurante> listarRestaurantes() {
         return restauranteRepository.findAll()
                 .stream()
-                .map(mapper::toDomain)
+                .map(restauranteMapper::toDomain)
                 .collect(Collectors.toList());
     }
 }

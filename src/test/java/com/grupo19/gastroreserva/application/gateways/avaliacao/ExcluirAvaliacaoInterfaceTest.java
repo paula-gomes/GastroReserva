@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-class ExcluirAvaliacaoInterfaceTest {
+public class ExcluirAvaliacaoInterfaceTest {
 
     @Mock
     private ExcluirAvaliacaoInterface excluirAvaliacaoInterface;
@@ -26,7 +26,7 @@ class ExcluirAvaliacaoInterfaceTest {
     }
 
     @Test
-    void deveExcluirAvaliacao() {
+    public void deveExcluirAvaliacao() {
         Avaliacao avaliacao = new Avaliacao();
         excluirAvaliacaoInterface.excluirAvaliacao(avaliacao);
         verify(excluirAvaliacaoInterface, times(1)).excluirAvaliacao(avaliacao);

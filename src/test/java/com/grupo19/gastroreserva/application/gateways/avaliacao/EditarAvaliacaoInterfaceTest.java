@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class EditarAvaliacaoInterfaceTest {
+public class EditarAvaliacaoInterfaceTest {
 
     @Mock
     private EditarAvaliacaoInterface editarAvaliacaoInterface;
@@ -28,7 +28,7 @@ class EditarAvaliacaoInterfaceTest {
 
 
     @Test
-    void devePermitirRegistrarEdicaoDeAvaliacao() {
+    public void devePermitirRegistrarEdicaoDeAvaliacao() {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setNota(5);
 

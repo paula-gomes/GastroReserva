@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-class AvaliacaoTest {
+public class AvaliacaoTest {
 
     @Test
-    void todosCamposObrigatoriosDevemEstarPresentes(){
+    public void todosCamposObrigatoriosDevemEstarPresentes(){
         Avaliacao avaliacao = new Avaliacao();
 
         Endereco endereco = new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP");

@@ -47,7 +47,7 @@ class AlterarEnderecoRestauranteInterfaceTest {
             return r;
         });
 
-        Restaurante restauranteAlterado = alterarEnderecoRestaurante.alterarRestaurante(restaurante);
+        Restaurante restauranteAlterado = alterarEnderecoRestaurante.alterarEnderecoRestaurante(restaurante);
         assertEquals(enderecoAlterado, restauranteAlterado.getEndereco());
     }
 }

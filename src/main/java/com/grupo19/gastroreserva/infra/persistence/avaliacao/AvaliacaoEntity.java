@@ -2,24 +2,44 @@ package com.grupo19.gastroreserva.infra.persistence.avaliacao;
 
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
-import lombok.Data;
+import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
+import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
-public class AvaliacaoEntity {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Avaliacao")
+public class AvaliacaoEntity implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Cliente cliente;
-    private Restaurante restaurante;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_cpf")
+    private ClienteEntity cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurante_id")
+    private RestauranteEntity restaurante;
+
+    @Column(name = "nota")
     private Integer nota;
+
+    @Column(name = "comentario")
     private String comentario;
+
+    @Column(name = "data")
     private LocalDate data;
 
-    public AvaliacaoEntity() {
-    }
-
-    public AvaliacaoEntity(Cliente cliente, Restaurante restaurante, Integer nota, String comentario, LocalDate data) {
+    public AvaliacaoEntity(ClienteEntity cliente, RestauranteEntity restaurante, Integer nota, String comentario, LocalDate data) {
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.nota = nota;
