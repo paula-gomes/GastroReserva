@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RestauranteMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GastroReserva</a> &gt; <a href="index.source.html" class="el_package">com.grupo19.gastroreserva.infra.gateways.restaurante</a> &gt; <span class="el_source">RestauranteMapperImpl.java</span></div><h1>RestauranteMapperImpl.java</h1><pre class="source lang-java linenums">package com.grupo19.gastroreserva.infra.gateways.restaurante;
+
+
+import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
+import org.springframework.stereotype.Component;
+
+@Component
+<span class="fc" id="L9">public class RestauranteMapperImpl implements RestauranteMapper {</span>
+
+    @Override
+    public RestauranteEntity toEntity(Restaurante restaurante) {
+<span class="nc bnc" id="L13" title="All 2 branches missed.">        if (restaurante == null) {</span>
+<span class="nc" id="L14">            return null;</span>
+        }
+
+<span class="nc" id="L17">        RestauranteEntity entity = new RestauranteEntity();</span>
+<span class="nc" id="L18">        entity.setNome(restaurante.getNome());</span>
+<span class="nc" id="L19">        entity.setEndereco(restaurante.getEndereco());</span>
+<span class="nc" id="L20">        entity.setTipoDeCozinha(restaurante.getTipoDeCozinha());</span>
+<span class="nc" id="L21">        entity.setHorarioDeFuncionamento(restaurante.getHorarioDeFuncionamento());</span>
+<span class="nc" id="L22">        entity.setCapacidade(restaurante.getCapacidade());</span>
+<span class="nc" id="L23">        entity.setCadeirasDisponiveis(restaurante.getCadeirasDisponiveis());</span>
+
+<span class="nc" id="L25">        return entity;</span>
+    }
+
+    @Override
+    public Restaurante toDomain(RestauranteEntity entity) {
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (entity == null) {</span>
+<span class="nc" id="L31">            return null;</span>
+        }
+
+<span class="nc" id="L34">        Restaurante restaurante = new Restaurante();</span>
+<span class="nc" id="L35">        restaurante.setNome(entity.getNome());</span>
+<span class="nc" id="L36">        restaurante.setEndereco(entity.getEndereco());</span>
+<span class="nc" id="L37">        restaurante.setTipoDeCozinha(entity.getTipoDeCozinha());</span>
+<span class="nc" id="L38">        restaurante.setHorarioDeFuncionamento(entity.getHorarioDeFuncionamento());</span>
+<span class="nc" id="L39">        restaurante.setCapacidade(entity.getCapacidade());</span>
+<span class="nc" id="L40">        restaurante.setCadeirasDisponiveis(entity.getCadeirasDisponiveis());</span>
+
+<span class="nc" id="L42">        return restaurante;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

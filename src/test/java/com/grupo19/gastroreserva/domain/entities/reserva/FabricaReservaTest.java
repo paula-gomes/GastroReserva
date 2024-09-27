@@ -18,7 +18,7 @@ public class FabricaReservaTest {
     @Test
     public void deveRealizarReservaComFabricasDeReserva(){
         FabricaReserva fabrica = new FabricaReserva();
-        Cliente cliente = new Cliente("123456789120", "nomeCliente", "email@teste.com");
+        Cliente cliente = new Cliente("123.456.789-10", "nomeCliente", "email@teste.com");
         Endereco endereco = new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP");
         HorarioDeFuncionamento horarioDeFuncionamento = new HorarioDeFuncionamento(LocalTime.of(9, 0), LocalTime.of(18, 0));
         Restaurante restaurante = new Restaurante("Restaurante Teste", endereco, "Italiana", horarioDeFuncionamento, 50, 100);

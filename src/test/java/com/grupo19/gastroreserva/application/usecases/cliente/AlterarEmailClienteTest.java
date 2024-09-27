@@ -1,23 +1,40 @@
 package com.grupo19.gastroreserva.application.usecases.cliente;
 
+import com.grupo19.gastroreserva.application.gateways.cliente.AlterarEmailClienteInterface;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
- class AlterarEmailClienteTest {
-//    @Test
-//    void deveAlterarEmailCliente() {
-//
-//        AlterarEmailCliente alterarEmailCliente = new AlterarEmailCliente();
-//        Cliente cliente = new Cliente("12345678900", "Cliente", "clienteA@email.com");
-//        cliente.setEmail("clienteB@email.com");
-//
-//        Cliente result = alterarEmailCliente.alterarEmailCliente(cliente);
-//
-//        assertNotNull(result);
-//        assertEquals("clienteB@email.com", result.getEmail());
-//    }
+class AlterarEmailClienteTest {
 
+ @Mock
+ private AlterarEmailClienteInterface alterarEmailClienteInterface;
+
+ @InjectMocks
+ private AlterarEmailCliente alterarEmailCliente;
+
+ private Cliente cliente;
+
+ @BeforeEach
+ void setUp() {
+  MockitoAnnotations.openMocks(this);
+  cliente = new Cliente();
+  cliente.setEmail("novoemail@example.com");
+ }
+
+ @Test
+ void deveAlterarEmailDoCliente() {
+
+  when(alterarEmailClienteInterface.alterarEmailCliente(cliente)).thenReturn(cliente);
+
+  Cliente clienteAtualizado = alterarEmailCliente.alterarEmailCliente(cliente);
+
+  assertEquals("novoemail@example.com", clienteAtualizado.getEmail());
+ }
 }

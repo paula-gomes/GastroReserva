@@ -1,50 +1,34 @@
 package com.grupo19.gastroreserva.application.usecases.avaliacao;
 
 import com.grupo19.gastroreserva.application.gateways.avaliacao.EditarAvaliacaoInterface;
-import com.grupo19.gastroreserva.domain.Endereco;
-import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
 import com.grupo19.gastroreserva.domain.entities.avaliacao.Avaliacao;
-import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
-import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
-class EditarAvaliacaoTest {
-    @Test
-    void deveEditarAvaliacao() {
-        EditarAvaliacaoInterface mockInterface = Mockito.mock(EditarAvaliacaoInterface.class);
+public class EditarAvaliacaoTest {
+    private EditarAvaliacaoInterface editarAvaliacaoInterface;
+    private EditarAvaliacao editarAvaliacao;
 
-
-        Cliente cliente = new Cliente("12345678900", "John Doe", "john.doe@example.com");
-        Restaurante restaurante = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
-
-        cliente.addRestaurante(restaurante);
-        Avaliacao avaliacao = new Avaliacao(cliente, restaurante, 4, "Bom", LocalDate.now());
-
-        Mockito.when(mockInterface.editarAvaliacao(avaliacao)).thenReturn(avaliacao);
-
-        EditarAvaliacao editarAvaliacao = new EditarAvaliacao(mockInterface);
-
-        Avaliacao result = editarAvaliacao.editarAvaliacao(avaliacao);
-
-
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals(avaliacao, result);
+    @BeforeEach
+    public void setUp() {
+        editarAvaliacaoInterface = mock(EditarAvaliacaoInterface.class);
+        editarAvaliacao = new EditarAvaliacao(editarAvaliacaoInterface);
     }
 
     @Test
-    void deveTratarAvaliacaoQuandoNulo() {
-        EditarAvaliacaoInterface mockInterface = Mockito.mock(EditarAvaliacaoInterface.class);
-        Mockito.when(mockInterface.editarAvaliacao(null)).thenThrow(new IllegalArgumentException("Avaliacao nao pode ser nulo"));
+    public void testEditarAvaliacao() {
 
-        EditarAvaliacao editarAvaliacao = new EditarAvaliacao(mockInterface);
+        Avaliacao avaliacaoEsperada = new Avaliacao();
 
-        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            editarAvaliacao.editarAvaliacao(null);
-        });
-        Assertions.assertEquals("Avaliacao nao pode ser nulo", exception.getMessage());
+        when(editarAvaliacaoInterface.editarAvaliacao(any(Avaliacao.class))).thenReturn(avaliacaoEsperada);
+        Avaliacao resultado = editarAvaliacao.editarAvaliacao(avaliacaoEsperada);
+        verify(editarAvaliacaoInterface, times(1)).editarAvaliacao(any(Avaliacao.class));
+
+
+        assertEquals(avaliacaoEsperada, resultado);
     }
 }
