@@ -1,4 +1,4 @@
-package com.grupo19.gastroreserva.unit.controller.avaliacao;
+package com.grupo19.gastroreserva.unit.infra.controller.avaliacao;
 
 import com.grupo19.gastroreserva.application.usecases.avaliacao.EditarAvaliacao;
 import com.grupo19.gastroreserva.application.usecases.avaliacao.ExcluirAvaliacao;

@@ -16,8 +16,9 @@ public class ClienteMapper {
     RestauranteMapper restauranteMapper = new RestauranteMapper();
 
     public ClienteEntity toEntity(Cliente cliente) {
-        List<RestauranteEntity> restaurantesEntity = new ArrayList<>();
-        cliente.getRestaurantes().stream().map(restauranteMapper::toEntity).collect(Collectors.toList());
+        List<RestauranteEntity> restaurantesEntity = cliente.getRestaurantes().stream()
+                .map(restauranteMapper::toEntity)
+                .collect(Collectors.toList());
         return new ClienteEntity(cliente.getCpf(),
                 cliente.getNome(),
                 cliente.getEmail(),
@@ -26,8 +27,9 @@ public class ClienteMapper {
     }
 
     public Cliente toDomain(ClienteEntity entity) {
-        List<Restaurante> restaurantes = new ArrayList<>();
-        entity.getRestaurante().stream().map(restauranteMapper::toDomain).collect(Collectors.toList());
+        List<Restaurante> restaurantes = entity.getRestaurante().stream()
+                .map(restauranteMapper::toDomain)
+                .collect(Collectors.toList());
         return new Cliente(entity.getCpf(),
                 entity.getNome(),
                 entity.getEmail(),

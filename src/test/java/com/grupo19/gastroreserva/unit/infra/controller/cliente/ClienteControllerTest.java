@@ -1,4 +1,4 @@
-package com.grupo19.gastroreserva.unit.controller.cliente;
+package com.grupo19.gastroreserva.unit.infra.controller.cliente;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo19.gastroreserva.application.usecases.cliente.AlterarEmailCliente;

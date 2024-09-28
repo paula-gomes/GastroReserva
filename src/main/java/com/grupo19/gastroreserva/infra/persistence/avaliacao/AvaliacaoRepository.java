@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface AvaliacaoRepository extends JpaRepository<AvaliacaoEntity, Long> {
     List<AvaliacaoEntity> findByCliente(ClienteEntity clienteEntity);
+
 }

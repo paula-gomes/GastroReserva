@@ -1,4 +1,4 @@
-package com.grupo19.gastroreserva.unit.controller.avaliacao;
+package com.grupo19.gastroreserva.unit.infra.controller.avaliacao;
 
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
