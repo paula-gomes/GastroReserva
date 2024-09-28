@@ -30,6 +30,7 @@ class FabricaAvaliacaoTest {
         cliente = new Cliente();
         restaurante = new Restaurante();
         data = LocalDate.now();
+        cliente.addRestaurante(restaurante);
     }
 
     @Test
@@ -37,7 +38,7 @@ class FabricaAvaliacaoTest {
         // Arrange
         Integer nota = 5;
         String comentario = "Ótimo restaurante!";
-
+        cliente.getRestaurantes();
         // Act
         Avaliacao avaliacao = fabricaAvaliacao.realizarAvaliacao(cliente, restaurante, nota, comentario, data);
 

@@ -18,7 +18,7 @@ public class ReservaTest {
     @Test
     public void deveRealizarReserva() {
 
-        Cliente cliente = new Cliente("123456789120", "nomeCliente", "email@teste.com");
+        Cliente cliente = new Cliente("123.456.789-10", "nomeCliente", "email@teste.com");
         Endereco endereco = new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP");
         HorarioDeFuncionamento horarioDeFuncionamento = new HorarioDeFuncionamento(LocalTime.of(9, 0), LocalTime.of(18, 0));
         LocalTime horario = LocalTime.of(17, 30);

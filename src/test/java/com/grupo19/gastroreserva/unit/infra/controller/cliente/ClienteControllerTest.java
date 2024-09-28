@@ -50,7 +50,7 @@ public class ClienteControllerTest {
 
     @BeforeEach
     void setup() {
-        cliente = new Cliente("12345678901", "João Silva", "joao@gmail.com", Collections.emptyList());
+        cliente = new Cliente("123.456.789-10", "João Silva", "joao@gmail.com", Collections.emptyList());
     }
 
     @Test
