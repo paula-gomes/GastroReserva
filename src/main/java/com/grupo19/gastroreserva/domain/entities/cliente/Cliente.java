@@ -24,7 +24,8 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.restaurantes = (restaurantes != null) ? restaurantes : new ArrayList<>();
+        this.restaurantes = restaurantes;
+
     }
 
     public Cliente() {
@@ -32,10 +33,9 @@ public class Cliente {
     }
 
     public Cliente(String cpf, String nome, String email) {
+
         this(cpf, nome, email, new ArrayList<>());
     }
-
-
 
     public String getCpf() {
         return cpf;
