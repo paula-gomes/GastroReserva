@@ -20,7 +20,10 @@ public class Avaliacao {
         if(nota < 0 || nota > 5){
             throw new IllegalArgumentException("Nota inválida");
         }
-        if(!cliente.getRestaurantes().contains(restaurante)){
+        boolean clienteFrequentouRestaurante = cliente.getRestaurantes().stream()
+                .anyMatch(r -> r.getId().equals(restaurante.getId()));
+
+        if (!clienteFrequentouRestaurante) {
             throw new IllegalArgumentException("O Cliente nunca frequentou este restaurante");
         }
 

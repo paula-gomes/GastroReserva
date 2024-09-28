@@ -56,6 +56,7 @@ public class AvaliacaoControllerTest {
 
         List<Restaurante> restaurantesFrequentados = new ArrayList<>();
         Restaurante restaurante = new Restaurante("Restaurante A", null, "Brasileira", null, 100);
+        restaurante.setId(1L);
         restaurantesFrequentados.add(restaurante);
 
         ClienteDTO clienteDTO = new ClienteDTO("123.456.789-00", "John Doe", "john.doe@example.com", restaurantesFrequentados);
@@ -83,6 +84,7 @@ public class AvaliacaoControllerTest {
 
         Cliente cliente = new Cliente("123.456.789-10", "Cliente Teste", "email@teste.com");
         Restaurante restaurante = new Restaurante();
+        restaurante.setId(1L);
         restaurante.setNome("Restaurante Exemplo");
         restaurante.setEndereco(new Endereco());
         restaurante.setTipoDeCozinha("Italiana");

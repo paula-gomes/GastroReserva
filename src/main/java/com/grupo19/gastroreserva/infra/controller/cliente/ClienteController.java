@@ -14,8 +14,9 @@ import java.util.List;
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private final AlterarEmailCliente alterarEmailCliente;
+
     private final CadastrarCliente cadastrarCliente;
+    private final AlterarEmailCliente alterarEmailCliente;
     private final ExcluirCliente excluirCliente;
     private final ListarClientes listarClientes;
 
@@ -29,17 +30,19 @@ public class ClienteController {
         this.listarClientes = listarClientes;
     }
 
-    @PostMapping
-    public ClienteDTO cadastrarCliente(@RequestBody ClienteDTO dto) {
-        Cliente salvo = cadastrarCliente.cadastrarCliente(new Cliente(dto.cpf(), dto.nome(), dto.email(), dto.restaurantes()));
-        return new ClienteDTO(salvo.getCpf(), salvo.getNome(), salvo.getEmail(), salvo.getRestaurantes());
-    }
 
     @PostMapping("/email")
     public ClienteDTO alterarEmailCliente(@RequestBody ClienteDTO dto) {
         Cliente salvo = alterarEmailCliente.alterarEmailCliente(new Cliente(dto.cpf(), dto.nome(), dto.email(), dto.restaurantes()));
         return new ClienteDTO(salvo.getCpf(), salvo.getNome(), salvo.getEmail(), salvo.getRestaurantes());
     }
+
+    @PostMapping
+    public ClienteDTO cadastrarCliente(@RequestBody ClienteDTO dto) {
+        Cliente salvo = cadastrarCliente.cadastrarCliente(new Cliente(dto.cpf(), dto.nome(), dto.email(), dto.restaurantes()));
+        return new ClienteDTO(salvo.getCpf(), salvo.getNome(), salvo.getEmail(), salvo.getRestaurantes());
+    }
+
 
     @DeleteMapping
     public void excluirCliente(@RequestBody ClienteDTO dto) {

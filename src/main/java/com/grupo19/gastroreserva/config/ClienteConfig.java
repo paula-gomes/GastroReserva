@@ -15,6 +15,7 @@ import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ClienteConfig {
@@ -25,6 +26,7 @@ public class ClienteConfig {
     }
 
     @Bean
+    @Primary
     CadastrarCliente cadastrarCliente(CadastrarClienteInterface cadastrarCliente ){
         return new CadastrarCliente(cadastrarCliente);
     }

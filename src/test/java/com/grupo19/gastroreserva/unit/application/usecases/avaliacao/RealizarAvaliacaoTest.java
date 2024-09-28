@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
 
         Cliente cliente = new Cliente("123.456.789-10", "John Doe", "john.doe@example.com");
         Restaurante restaurante = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
-
+       restaurante.setId(1L);
 
         cliente.addRestaurante(restaurante);
         Avaliacao avaliacao = new Avaliacao(cliente, restaurante, 4, "Bom", LocalDate.now());

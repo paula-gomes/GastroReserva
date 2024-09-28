@@ -29,6 +29,7 @@ class FabricaAvaliacaoTest {
         fabricaAvaliacao = new FabricaAvaliacao();
         cliente = new Cliente();
         restaurante = new Restaurante();
+        restaurante.setId(1L);
         data = LocalDate.now();
         cliente.addRestaurante(restaurante);
     }
@@ -42,7 +43,8 @@ class FabricaAvaliacaoTest {
         
         Avaliacao avaliacao = fabricaAvaliacao.realizarAvaliacao(cliente, restaurante, nota, comentario, data);
 
-        
+
+
         assertEquals(cliente, avaliacao.getCliente());
         assertEquals(restaurante, avaliacao.getRestaurante());
         assertEquals(nota, avaliacao.getNota());

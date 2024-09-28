@@ -54,6 +54,7 @@ public class RepositorioDeAvaliacaoJpaTest {
         HorarioDeFuncionamento horarioFuncionamento = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
 
         Restaurante restaurante = new Restaurante("Restaurante A", endereco, "Italiana", horarioFuncionamento, 100, 50);
+        restaurante.setId(1L);
         cliente = new Cliente("123.456.789-10", "João", "joao@email.com");
         cliente.addRestaurante(restaurante);
 

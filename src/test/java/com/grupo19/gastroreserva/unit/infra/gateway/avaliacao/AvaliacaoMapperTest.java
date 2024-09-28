@@ -42,6 +42,7 @@ public class AvaliacaoMapperTest {
         MockitoAnnotations.openMocks(this);
         cliente = new Cliente("123.456.789-10", "John Doe", "john.doe@example.com");
         restaurante = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
+        restaurante.setId(1L);
         cliente.addRestaurante(restaurante);
         avaliacao = new Avaliacao(cliente, restaurante, 5, "Excelente!", LocalDate.now());
         avaliacaoEntity = new AvaliacaoEntity(new ClienteEntity(), new RestauranteEntity(), 5, "Excelente!", LocalDate.now());

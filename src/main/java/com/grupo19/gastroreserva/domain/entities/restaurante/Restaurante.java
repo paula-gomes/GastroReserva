@@ -4,6 +4,7 @@ import com.grupo19.gastroreserva.domain.Endereco;
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
 
 public class Restaurante {
+    private Long id;
     private String nome;
     private Endereco endereco;
     private String tipoDeCozinha;
@@ -29,6 +30,16 @@ public class Restaurante {
 
     }
 
+    public Restaurante(Long id, String nome, Endereco endereco, String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento, Integer capacidade, Integer cadeirasDisponiveis) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.tipoDeCozinha = tipoDeCozinha;
+        this.horarioDeFuncionamento = horarioDeFuncionamento;
+        this.capacidade = capacidade;
+        this.cadeirasDisponiveis = cadeirasDisponiveis;
+    }
+
     public Restaurante(String nome, Endereco endereco, String tipoDeCozinha, HorarioDeFuncionamento horarioDeFuncionamento, Integer capacidade, Integer cadeirasDisponiveis) {
         this.nome = nome;
         this.endereco = endereco;
@@ -36,6 +47,14 @@ public class Restaurante {
         this.horarioDeFuncionamento = horarioDeFuncionamento;
         this.capacidade = capacidade;
         this.cadeirasDisponiveis = cadeirasDisponiveis;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

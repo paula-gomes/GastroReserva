@@ -50,7 +50,7 @@ public class ReservaMapperTest {
 
         Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.emptyList());
         Restaurante restaurante = new Restaurante("Restaurante A", endereco, "Italiana", horarioFuncionamento, 100, 50);
-        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2);
+        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 4);
 
         ClienteEntity mockClienteEntity = mock(ClienteEntity.class);
         RestauranteEntity mockRestauranteEntity = mock(RestauranteEntity.class);
@@ -73,7 +73,7 @@ public class ReservaMapperTest {
         EnderecoEntity enderecoEntity = new EnderecoEntity("12345-123", "logradouro", "12", "bairro", "cidade", "SP");
         HorarioDeFuncionamentoEntity horarioFuncionamentoEntity = new HorarioDeFuncionamentoEntity(LocalTime.of(9, 0), LocalTime.of(18, 0));
         RestauranteEntity restauranteEntity = new RestauranteEntity("Restaurante A", enderecoEntity, "Italiana", horarioFuncionamentoEntity, 50, 50);
-        ReservaEntity reservaEntity = new ReservaEntity(clienteEntity, restauranteEntity, LocalTime.now(), LocalDate.now(), 4);
+        ReservaEntity reservaEntity = new ReservaEntity(clienteEntity, restauranteEntity, LocalTime.of(16, 0), LocalDate.now(), 4);
 
         ClienteMapper clienteMapper = new ClienteMapper(new RestauranteMapper(null, null));
         RestauranteMapper restauranteMapper = new RestauranteMapper(null, null);

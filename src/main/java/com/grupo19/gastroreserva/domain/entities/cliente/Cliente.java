@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+    private Long id;
     private String cpf;
     private String nome;
     private String email;
@@ -13,14 +14,14 @@ public class Cliente {
 
     public Cliente(String cpf, String nome, String email, List<Restaurante> restaurantes) {
 
-        if(cpf == null || cpf.isBlank() || nome == null || nome.isBlank() || email == null || email.isBlank()){
+        if (cpf == null || cpf.isBlank() || nome == null || nome.isBlank() || email == null || email.isBlank()) {
             throw new IllegalArgumentException("Campo Obrigatório está nulo ou vazio");
         }
 
-        if(!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")){
+        if (!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")) {
             throw new IllegalArgumentException("CPF no formato inválido");
         }
-
+        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -28,8 +29,17 @@ public class Cliente {
 
     }
 
+
     public Cliente() {
         this.restaurantes = new ArrayList<>();
+    }
+
+    public Cliente(Long id, String cpf, String nome, String email, List<Restaurante> restaurantes) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.restaurantes = restaurantes;
     }
 
     public Cliente(String cpf, String nome, String email) {

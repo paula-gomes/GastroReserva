@@ -45,7 +45,7 @@ public class RepositorioDeReservaJpaTest {
     @Test
     void testAlterarDataReserva() {
         Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.singletonList(restaurante));
-        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2);
+        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 2);
         ReservaEntity reservaEntity = new ReservaEntity();
 
         when(reservaMapper.toEntity(reserva)).thenReturn(reservaEntity);
@@ -61,7 +61,7 @@ public class RepositorioDeReservaJpaTest {
     @Test
     void testAlterarHorarioReserva() {
         Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.singletonList(restaurante));
-        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2);
+        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 2);
         ReservaEntity reservaEntity = new ReservaEntity();
 
         when(reservaMapper.toEntity(reserva)).thenReturn(reservaEntity);
@@ -77,7 +77,7 @@ public class RepositorioDeReservaJpaTest {
     @Test
     void testCancelarReserva() {
         Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.singletonList(restaurante));
-        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2);
+        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 2);
         ReservaEntity reservaEntity = new ReservaEntity();
 
         when(reservaMapper.toEntity(reserva)).thenReturn(reservaEntity);
@@ -90,7 +90,7 @@ public class RepositorioDeReservaJpaTest {
     @Test
     void testRealizarReserva() {
         Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.singletonList(restaurante));
-        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2);
+        Reserva reserva = new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 2);
         ReservaEntity reservaEntity = new ReservaEntity();
 
         when(reservaMapper.toEntity(reserva)).thenReturn(reservaEntity);
@@ -109,7 +109,7 @@ public class RepositorioDeReservaJpaTest {
         ReservaEntity reservaEntity = new ReservaEntity();
         List<ReservaEntity> listaEntidades = Collections.singletonList(reservaEntity);
         when(reservaRepository.findAll()).thenReturn(listaEntidades);
-        when(reservaMapper.toDomain(reservaEntity)).thenReturn(new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 2));
+        when(reservaMapper.toDomain(reservaEntity)).thenReturn(new Reserva(cliente, restaurante, LocalTime.of(16, 0), LocalDate.now(), 2));
 
         List<Reserva> result = repositorioDeReservaJpa.listarReservas(cliente);
 
