@@ -49,7 +49,8 @@ public class RestauranteConfig {
     }
 
     @Bean
-    RestauranteMapper criaRestauranteMapper() { return new RestauranteMapper(); }
-
+    RestauranteMapper criaRestauranteMapper(HorarioDeFuncionamentoRepository horarioDeFuncionamentoRepository, EnderecoRepository enderecoRepository) {
+        return new RestauranteMapper(horarioDeFuncionamentoRepository, enderecoRepository);
+    }
 
 }

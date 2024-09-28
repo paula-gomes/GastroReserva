@@ -25,7 +25,7 @@ public class ClienteEntity implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "cliente_restaurante",
     joinColumns = @JoinColumn(name = "cliente_cpf"),
     inverseJoinColumns = @JoinColumn(name = "restaurante_id"))
