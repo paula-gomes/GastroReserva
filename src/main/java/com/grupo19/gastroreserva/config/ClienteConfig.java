@@ -11,6 +11,7 @@ import com.grupo19.gastroreserva.application.usecases.cliente.ListarClientes;
 import com.grupo19.gastroreserva.infra.controller.cliente.ClienteController;
 import com.grupo19.gastroreserva.infra.gateways.cliente.ClienteMapper;
 import com.grupo19.gastroreserva.infra.gateways.cliente.RepositorioDeClienteJpa;
+import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,7 @@ public class ClienteConfig {
     }
 
     @Bean
-    ClienteMapper criaClienteMapper(){ return new ClienteMapper(); }
-
+    ClienteMapper criaClienteMapper(RestauranteMapper restauranteMapper) {
+        return new ClienteMapper(restauranteMapper);
+    }
 }

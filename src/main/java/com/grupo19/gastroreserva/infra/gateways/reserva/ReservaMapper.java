@@ -10,8 +10,14 @@ import com.grupo19.gastroreserva.infra.persistence.reserva.ReservaEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 
 public class ReservaMapper {
-    ClienteMapper clienteMapper = new ClienteMapper();
-    RestauranteMapper restauranteMapper = new RestauranteMapper();
+
+    private final ClienteMapper clienteMapper;
+    private final RestauranteMapper restauranteMapper;
+
+    public ReservaMapper(ClienteMapper clienteMapper, RestauranteMapper restauranteMapper) {
+        this.clienteMapper = clienteMapper;
+        this.restauranteMapper = restauranteMapper;
+    }
 
     public ReservaEntity toEntity(Reserva reserva) {
         ClienteEntity clienteEntity = clienteMapper.toEntity(reserva.getCliente());

@@ -13,7 +13,11 @@ import java.util.stream.Collectors;
 
 public class ClienteMapper {
 
-    RestauranteMapper restauranteMapper = new RestauranteMapper();
+    private final RestauranteMapper restauranteMapper;
+
+    public ClienteMapper(RestauranteMapper restauranteMapper) {
+        this.restauranteMapper = restauranteMapper;
+    }
 
     public ClienteEntity toEntity(Cliente cliente) {
         List<RestauranteEntity> restaurantesEntity = cliente.getRestaurantes().stream()
@@ -23,7 +27,7 @@ public class ClienteMapper {
                 cliente.getNome(),
                 cliente.getEmail(),
                 restaurantesEntity
-              );
+        );
     }
 
     public Cliente toDomain(ClienteEntity entity) {

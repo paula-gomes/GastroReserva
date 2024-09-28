@@ -7,6 +7,7 @@ import com.grupo19.gastroreserva.application.usecases.avaliacao.RealizarAvaliaca
 import com.grupo19.gastroreserva.infra.gateways.avaliacao.AvaliacaoMapper;
 import com.grupo19.gastroreserva.infra.gateways.avaliacao.RepositorioDeAvaliacaoJpa;
 import com.grupo19.gastroreserva.infra.gateways.cliente.ClienteMapper;
+import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.avaliacao.AvaliacaoRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,6 +42,8 @@ public class AvaliacaoConfig {
         return new RepositorioDeAvaliacaoJpa(avaliacaoRepository, avaliacaoMapper, clienteMapper);
     }
 
-    @Bean
-    AvaliacaoMapper criaMapper(){ return new AvaliacaoMapper(); }
+@Bean
+AvaliacaoMapper criaMapper(ClienteMapper clienteMapper, RestauranteMapper restauranteMapper) {
+    return new AvaliacaoMapper(clienteMapper, restauranteMapper);
+}
 }

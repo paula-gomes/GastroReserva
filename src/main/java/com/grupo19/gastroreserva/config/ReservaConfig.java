@@ -2,8 +2,10 @@ package com.grupo19.gastroreserva.config;
 
 import com.grupo19.gastroreserva.application.gateways.reserva.*;
 import com.grupo19.gastroreserva.application.usecases.reserva.*;
+import com.grupo19.gastroreserva.infra.gateways.cliente.ClienteMapper;
 import com.grupo19.gastroreserva.infra.gateways.reserva.RepositorioDeReservaJpa;
 import com.grupo19.gastroreserva.infra.gateways.reserva.ReservaMapper;
+import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.reserva.ReservaRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,5 +44,7 @@ public class ReservaConfig {
     }
 
     @Bean
-    ReservaMapper criarMapper(){ return new ReservaMapper(); }
+    ReservaMapper criaReservaMapper(ClienteMapper clienteMapper, RestauranteMapper restauranteMapper) {
+        return new ReservaMapper(clienteMapper, restauranteMapper);
+    }
 }

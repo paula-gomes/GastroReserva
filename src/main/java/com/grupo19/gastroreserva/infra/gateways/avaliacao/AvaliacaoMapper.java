@@ -12,20 +12,23 @@ import org.springframework.stereotype.Component;
 
 public class AvaliacaoMapper {
 
-    ClienteMapper clienteMapper = new ClienteMapper();
-    RestauranteMapper restauranteMapper = new RestauranteMapper();
+    private final ClienteMapper clienteMapper;
+    private final RestauranteMapper restauranteMapper;
+
+    public AvaliacaoMapper(ClienteMapper clienteMapper, RestauranteMapper restauranteMapper) {
+        this.clienteMapper = clienteMapper;
+        this.restauranteMapper = restauranteMapper;
+    }
 
     public AvaliacaoEntity toEntity(Avaliacao avaliacao) {
         ClienteEntity clienteEntity = clienteMapper.toEntity(avaliacao.getCliente());
         RestauranteEntity restaurante = restauranteMapper.toEntity(avaliacao.getRestaurante());
-        restauranteMapper.toEntity(avaliacao.getRestaurante());
         return new AvaliacaoEntity(clienteEntity,
                 restaurante,
                 avaliacao.getNota(),
                 avaliacao.getComentario(),
                 avaliacao.getData());
     }
-
 
     public Avaliacao toDomain(AvaliacaoEntity entity) {
         Restaurante restaurante = restauranteMapper.toDomain(entity.getRestaurante());
