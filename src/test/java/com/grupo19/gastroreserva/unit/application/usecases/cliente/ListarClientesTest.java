@@ -14,7 +14,7 @@ public class ListarClientesTest {
     @Test
     public void deveListarClientes() {
         ListarClientesInterface listarClientesInterface = Mockito.mock(ListarClientesInterface.class);
-        List<Cliente> expectedClientes = Arrays.asList(new Cliente("12345678900", "John Doe", "john@example.com"));
+        List<Cliente> expectedClientes = Arrays.asList(new Cliente("123.456.789-10", "John Doe", "john@example.com"));
         Mockito.when(listarClientesInterface.listarClientes()).thenReturn(expectedClientes);
 
         ListarClientes listarClientes = new ListarClientes(listarClientesInterface);

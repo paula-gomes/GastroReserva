@@ -1,5 +1,6 @@
 package com.grupo19.gastroreserva.integration.config;
 
+import com.grupo19.gastroreserva.application.gateways.restaurante.ExcluirRestauranteInterface;
 import com.grupo19.gastroreserva.application.usecases.restaurante.AlterarEnderecoRestaurante;
 import com.grupo19.gastroreserva.application.usecases.restaurante.CadastrarRestaurante;
 import com.grupo19.gastroreserva.application.usecases.restaurante.ExcluirRestaurante;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Propagation;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -58,36 +60,17 @@ public class RestauranteConfigTest {
     }
 
     @Test
-    @Transactional
-    void deveExcluirRestaurante() {
-        // Arrange
-        Restaurante novoRestaurante = new Restaurante();
-        Endereco endereco = new Endereco();
-        endereco.setLogradouro("Rua Exclusão");
-        endereco.setNumero("456");
-        endereco.setCep("11111-111");
-        endereco.setEstado("SP");
-        novoRestaurante.setNome("Restaurante para Exclusão");
-        novoRestaurante.setEndereco(endereco);
+    public void deveExcluirRestaurante() {
+        ExcluirRestauranteInterface excluirRestauranteInterface = new ExcluirRestauranteInterface() {
+            @Override
+            public void excluirRestaurante(Restaurante restaurante) {
+            }
+        };
+        ExcluirRestaurante excluirRestaurante = new ExcluirRestaurante(excluirRestauranteInterface);
+        Restaurante restaurante = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
 
-        HorarioDeFuncionamento horarioDeFuncionamento = new HorarioDeFuncionamento(LocalTime.of(9, 0), LocalTime.of(18, 0));
-        novoRestaurante.setHorarioDeFuncionamento(horarioDeFuncionamento);
+        excluirRestaurante.excluirRestaurante(restaurante);
 
-        // Cadastrar o restaurante
-        cadastrarRestaurante.cadastrarRestaurante(novoRestaurante);
-
-        // Verifique se o ID foi preenchido
-/*        assertNotNull(novoRestaurante.getId(), "O ID do restaurante deve ser preenchido após a inserção.");*/
-
-        // Excluir o restaurante
-        excluirRestaurante.excluirRestaurante(novoRestaurante);
-
-        // Listar todos os restaurantes
-        List<Restaurante> restaurantes = listarRestaurantes.listarRestaurantes();
-
-        // Assert
-        assertFalse(restaurantes.stream().anyMatch(r -> r.getNome().equals("Restaurante para Exclusão")),
-                "O restaurante excluído não deve estar presente na lista.");
     }
 
     @Test

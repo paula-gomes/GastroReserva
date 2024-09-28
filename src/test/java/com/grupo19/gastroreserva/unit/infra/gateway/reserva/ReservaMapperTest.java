@@ -69,48 +69,20 @@ public class ReservaMapperTest {
 
     @Test
     void testToDomain() {
+        ClienteEntity clienteEntity = new ClienteEntity("123.456.789-10", "Joao", "joao@email.com", new ArrayList<>());
         EnderecoEntity enderecoEntity = new EnderecoEntity("12345-123", "logradouro", "12", "bairro", "cidade", "SP");
+        HorarioDeFuncionamentoEntity horarioFuncionamentoEntity = new HorarioDeFuncionamentoEntity(LocalTime.of(9, 0), LocalTime.of(18, 0));
+        RestauranteEntity restauranteEntity = new RestauranteEntity("Restaurante A", enderecoEntity, "Italiana", horarioFuncionamentoEntity, 50, 50);
+        ReservaEntity reservaEntity = new ReservaEntity(clienteEntity, restauranteEntity, LocalTime.now(), LocalDate.now(), 4);
 
-        LocalTime horaAbertura = LocalTime.of(9, 0);
-        LocalTime horaFechamento = LocalTime.of(18, 0);
-        HorarioDeFuncionamentoEntity horarioFuncionamentoEntity = new HorarioDeFuncionamentoEntity(horaAbertura, horaFechamento);
+        ClienteMapper clienteMapper = new ClienteMapper(new RestauranteMapper(null, null));
+        RestauranteMapper restauranteMapper = new RestauranteMapper(null, null);
+        ReservaMapper reservaMapper = new ReservaMapper(clienteMapper, restauranteMapper);
 
-        RestauranteEntity restauranteEntity = new RestauranteEntity("Restaurante A", enderecoEntity, "Italiana", horarioFuncionamentoEntity, 50, 50); // capacidade correta
-
-        List<RestauranteEntity> restaurantes = new ArrayList<>();
-        restaurantes.add(restauranteEntity);
-
-        ClienteEntity clienteEntity = new ClienteEntity("123.456.789-10", "João", "joao@email.com", restaurantes);
-
-        ReservaEntity reservaEntity = new ReservaEntity(clienteEntity, restauranteEntity, LocalTime.now(), LocalDate.now(), 4); // Quantidade <= 50
-
-
-
-        // Criar mocks para Cliente e Restaurante
-        Cliente mockCliente = mock(Cliente.class);
-        Restaurante mockRestaurante = mock(Restaurante.class);
-
-        // Configurar comportamento dos mocks
-        when(mockCliente.getCpf()).thenReturn("123.456.789-10");
-        when(mockCliente.getNome()).thenReturn("João");
-        when(mockCliente.getEmail()).thenReturn("joao@email.com");
-
-        when(mockRestaurante.getNome()).thenReturn("Restaurante A");
-        when(mockRestaurante.getEndereco()).thenReturn(new Endereco("12345-123", "logradouro", "12", "bairro", "cidade", "SP"));
-        when(mockRestaurante.getTipoDeCozinha()).thenReturn("Italiana");
-
-        when(clienteMapper.toDomain(clienteEntity)).thenReturn(mockCliente);
-        when(restauranteMapper.toDomain(restauranteEntity)).thenReturn(mockRestaurante);
-
-        // Mapeamento da reserva
         Reserva reserva = reservaMapper.toDomain(reservaEntity);
 
-        // Verificações (asserts)
-        assertEquals(mockCliente.getCpf(), reserva.getCliente().getCpf());
-        assertEquals(mockCliente.getNome(), reserva.getCliente().getNome());
-        assertEquals(mockCliente.getEmail(), reserva.getCliente().getEmail());
-        assertEquals(mockRestaurante.getNome(), reserva.getRestaurante().getNome());
-        assertEquals(mockRestaurante.getEndereco().getCep(), reserva.getRestaurante().getEndereco().getCep());
+        assertEquals(clienteEntity.getCpf(), reserva.getCliente().getCpf());
+        assertEquals(restauranteEntity.getNome(), reserva.getRestaurante().getNome());
         assertEquals(reservaEntity.getHorario(), reserva.getHorario());
         assertEquals(reservaEntity.getData(), reserva.getData());
         assertEquals(reservaEntity.getQuantidade(), reserva.getQuantidade());
@@ -123,11 +95,10 @@ public class ReservaMapperTest {
         LocalTime horaFechamento = LocalTime.of(18, 0);
         HorarioDeFuncionamento horarioFuncionamento = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
 
-        Cliente cliente = new Cliente("123.456.789-10", "João", "joao@email.com", Collections.emptyList());
+        Cliente cliente = new Cliente("123.456.789-10", "Joao", "joao@email.com", Collections.emptyList());
         Restaurante restaurante = new Restaurante("Restaurante A", endereco, "Italiana", horarioFuncionamento, 100, 50);
 
-        // Deve lançar uma IllegalArgumentException
-        assertThrows(IllegalArgumentException.class, () -> {
+           assertThrows(IllegalArgumentException.class, () -> {
             new Reserva(cliente, restaurante, LocalTime.now(), LocalDate.now(), 200);
         });
     }

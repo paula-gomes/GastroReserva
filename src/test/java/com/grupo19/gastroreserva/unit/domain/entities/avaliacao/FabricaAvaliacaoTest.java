@@ -35,14 +35,14 @@ class FabricaAvaliacaoTest {
 
     @Test
     void deveRealizarAvaliacao() {
-        // Arrange
+        
         Integer nota = 5;
         String comentario = "Ótimo restaurante!";
         cliente.getRestaurantes();
-        // Act
+        
         Avaliacao avaliacao = fabricaAvaliacao.realizarAvaliacao(cliente, restaurante, nota, comentario, data);
 
-        // Assert
+        
         assertEquals(cliente, avaliacao.getCliente());
         assertEquals(restaurante, avaliacao.getRestaurante());
         assertEquals(nota, avaliacao.getNota());

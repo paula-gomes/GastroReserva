@@ -16,10 +16,10 @@ public class ClienteTest {
 
     @Test
     public void deveCriarCliente() {
-        Cliente cliente = new Cliente("12345678910", "nomeCliente", "email@teste.com");
+        Cliente cliente = new Cliente("123.456.789-10", "nomeCliente", "email@teste.com");
 
         assertNotNull(cliente);
-        assertEquals("12345678910", cliente.getCpf());
+        assertEquals("123.456.789-10", cliente.getCpf());
         assertEquals("nomeCliente", cliente.getNome());
         assertEquals("email@teste.com", cliente.getEmail());
     }
@@ -44,12 +44,12 @@ public class ClienteTest {
         String mensagemEsperada = "Campo Obrigatório está nulo ou vazio";
 
         Exception exceptionNulo = assertThrows(IllegalArgumentException.class, () -> {
-            new Cliente("12345678910", null, "email@teste.com");
+            new Cliente("123.456.789-10", null, "email@teste.com");
         });
         assertTrue(exceptionNulo.getMessage().contains(mensagemEsperada));
 
         Exception exceptionVazio = assertThrows(IllegalArgumentException.class, () -> {
-            new Cliente("12345678910", "", "email@teste.com");
+            new Cliente("123.456.789-10", "", "email@teste.com");
         });
         assertTrue(exceptionVazio.getMessage().contains(mensagemEsperada));
     }
@@ -59,19 +59,19 @@ public class ClienteTest {
         String mensagemEsperada = "Campo Obrigatório está nulo ou vazio";
 
         Exception exceptionNulo = assertThrows(IllegalArgumentException.class, () -> {
-            new Cliente("12345678910", "nomeCliente", null);
+            new Cliente("123.456.789-10", "nomeCliente", null);
         });
         assertTrue(exceptionNulo.getMessage().contains(mensagemEsperada));
 
         Exception exceptionVazio = assertThrows(IllegalArgumentException.class, () -> {
-            new Cliente("12345678910", "nomeCliente", "");
+            new Cliente("123.456.789-10", "nomeCliente", "");
         });
         assertTrue(exceptionVazio.getMessage().contains(mensagemEsperada));
     }
 
     @Test
     public void deveRetornarListaDeRestaurante() {
-        Cliente cliente = new Cliente("12345678900", "John Doe", "john.doe@example.com");
+        Cliente cliente = new Cliente("123.456.789-10", "John Doe", "john.doe@example.com");
         Restaurante restaurante1 = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
         Restaurante restaurante2 = new Restaurante("Restaurante B", new Endereco(), "Japonesa", new HorarioDeFuncionamento(), 30);
         cliente.addRestaurante(restaurante1);

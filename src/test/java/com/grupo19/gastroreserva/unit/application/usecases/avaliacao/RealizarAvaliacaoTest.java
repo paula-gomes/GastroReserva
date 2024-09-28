@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
         RealizarAvaliacaoInterface mockRealizarAvaliacaoInterface = mock(RealizarAvaliacaoInterface.class);
         RealizarAvaliacao realizarAvaliacao = new RealizarAvaliacao(mockRealizarAvaliacaoInterface);
 
-        Cliente cliente = new Cliente("12345678900", "John Doe", "john.doe@example.com");
+        Cliente cliente = new Cliente("123.456.789-10", "John Doe", "john.doe@example.com");
         Restaurante restaurante = new Restaurante("Restaurante A", new Endereco(), "Italiana", new HorarioDeFuncionamento(), 50);
 
 
