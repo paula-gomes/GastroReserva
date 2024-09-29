@@ -2,6 +2,7 @@ package com.grupo19.gastroreserva.integration.infra.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo19.gastroreserva.application.usecases.reserva.AlterarDataReserva;
+import com.grupo19.gastroreserva.application.usecases.reserva.AlterarHorarioReserva;
 import com.grupo19.gastroreserva.application.usecases.reserva.ListarReservas;
 import com.grupo19.gastroreserva.application.usecases.reserva.RealizarReserva;
 import com.grupo19.gastroreserva.domain.Endereco;
@@ -49,6 +50,9 @@ class ReservaControllerIntegrationTest {
     private RealizarReserva realizarReserva;
     @MockBean
     private AlterarDataReserva alterarDataReserva;
+    @MockBean
+    private AlterarHorarioReserva alterarHorarioReserva;
+
 
     @Test
     void deveRestornarReservas() throws Exception {
@@ -174,5 +178,61 @@ class ReservaControllerIntegrationTest {
                         quantidadeReservada
                 ))));
     }
+
+    @Test
+    void deveAlterarHoraReserva() throws Exception {
+        Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
+        LocalTime horaAbertura = LocalTime.of(9, 0);
+        LocalTime horaFechamento = LocalTime.of(18, 0);
+        HorarioDeFuncionamento horario = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
+
+        int cadeirasDisponiveis = 20;
+        int quantidadeReservada = 4;
+
+        RestauranteDTO restauranteDTO = new RestauranteDTO("Restaurante A", endereco, "Italiana", horario, 50, cadeirasDisponiveis);
+        ClienteDTO clienteDTO = new ClienteDTO("123.456.789-10", "João", "joao@example.com", new ArrayList<>());
+
+        LocalTime novaHora = LocalTime.of(17, 0);
+        LocalDate dataAtual = LocalDate.now();
+
+        Restaurante restaurante = new Restaurante(
+                restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(),
+                restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), cadeirasDisponiveis
+        );
+
+        Reserva reserva = new Reserva(
+                new Cliente(clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.email()),
+                restaurante,
+                novaHora, dataAtual, quantidadeReservada
+        );
+
+        when(alterarHorarioReserva.alterarHorarioReserva(any(Reserva.class))).thenReturn(reserva);
+
+        int cadeirasRestantes = restauranteDTO.cadeirasDisponiveis() - quantidadeReservada;
+        RestauranteDTO restauranteAtualizado = new RestauranteDTO(
+                restauranteDTO.nome(),
+                restauranteDTO.endereco(),
+                restauranteDTO.tipoDeCozinha(),
+                restauranteDTO.horarioDeFuncionamento(),
+                restauranteDTO.capacidade(),
+                cadeirasRestantes
+        );
+
+        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteDTO, LocalTime.of(16, 0), dataAtual, quantidadeReservada);
+
+        mockMvc.perform(post("/reservas/hora")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reservaDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(new ReservaDTO(
+                        clienteDTO,
+                        restauranteAtualizado,
+                        novaHora,
+                        dataAtual,
+                        quantidadeReservada
+                ))));
+    }
+
+
 
 }
