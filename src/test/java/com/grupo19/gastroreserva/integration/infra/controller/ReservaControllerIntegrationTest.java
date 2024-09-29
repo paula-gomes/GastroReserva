@@ -1,7 +1,9 @@
 package com.grupo19.gastroreserva.integration.infra.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo19.gastroreserva.application.usecases.reserva.AlterarDataReserva;
 import com.grupo19.gastroreserva.application.usecases.reserva.ListarReservas;
+import com.grupo19.gastroreserva.application.usecases.reserva.RealizarReserva;
 import com.grupo19.gastroreserva.domain.Endereco;
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
@@ -27,6 +29,7 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,9 +45,13 @@ class ReservaControllerIntegrationTest {
 
     @MockBean
     private ListarReservas listarReservas;
+    @MockBean
+    private RealizarReserva realizarReserva;
+    @MockBean
+    private AlterarDataReserva alterarDataReserva;
 
     @Test
-    void getReservas_ReturnsListOfReservas() throws Exception {
+    void deveRestornarReservas() throws Exception {
         Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
         LocalTime horaAbertura = LocalTime.of(9, 0);
         LocalTime horaFechamento = LocalTime.of(18, 0);
@@ -76,4 +83,101 @@ class ReservaControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(reservasMock)));
     }
+
+
+
+
+
+    @Test
+    void deveFazerReservas() throws Exception {
+        Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
+        LocalTime horaAbertura = LocalTime.of(9, 0);
+        LocalTime horaFechamento = LocalTime.of(18, 0);
+        HorarioDeFuncionamento horario = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
+        RestauranteDTO restauranteDTO = new RestauranteDTO("Restaurante A", endereco, "Italiana", horario, 50, 20);
+        ClienteDTO clienteDTO = new ClienteDTO("123.456.789-10", "João", "joao@example.com", new ArrayList<>());
+
+        int quantidadeReservada = 4;
+              // Criar a reserva
+        Reserva reserva = new Reserva(new Cliente(clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.email()),
+                new Restaurante(restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteDTO.cadeirasDisponiveis()),
+                LocalTime.of(16, 0), LocalDate.now(), quantidadeReservada);
+
+        RestauranteDTO restauranteAtualizado = new RestauranteDTO(
+                restauranteDTO.nome(),
+                restauranteDTO.endereco(),
+                restauranteDTO.tipoDeCozinha(),
+                restauranteDTO.horarioDeFuncionamento(),
+                restauranteDTO.capacidade(),
+                restauranteDTO.cadeirasDisponiveis() - quantidadeReservada
+        );
+
+        // Mockando a chamada ao serviço
+        when(realizarReserva.realizarReserva(any(Reserva.class))).thenReturn(reserva);
+
+        // Criar o DTO da reserva
+        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteAtualizado, LocalTime.of(16, 0), LocalDate.now(), quantidadeReservada);
+
+        // Executando a requisição e verificando o resultado
+        mockMvc.perform(post("/reservas")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reservaDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(new ReservaDTO(
+                        clienteDTO,
+                        new RestauranteDTO(restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteAtualizado.cadeirasDisponiveis()),
+                        LocalTime.of(16, 0),
+                        LocalDate.now(),
+                        quantidadeReservada
+                ))));
+    }
+
+    @Test
+    void deveAlterarDataReserva() throws Exception {
+        // Criação de objetos de exemplo
+        Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
+        LocalTime horaAbertura = LocalTime.of(9, 0);
+        LocalTime horaFechamento = LocalTime.of(18, 0);
+        HorarioDeFuncionamento horario = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
+        RestauranteDTO restauranteDTO = new RestauranteDTO("Restaurante A", endereco, "Italiana", horario, 50, 20);
+        ClienteDTO clienteDTO = new ClienteDTO("123.456.789-10", "João", "joao@example.com", new ArrayList<>());
+
+        // Informações da reserva
+        LocalTime novaHora = LocalTime.of(17, 0);
+        LocalDate novaData = LocalDate.now().plusDays(1);
+        int quantidadeReservada = 4;
+        // Criar a reserva
+        Reserva reserva = new Reserva(new Cliente(clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.email()),
+                new Restaurante(restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteDTO.cadeirasDisponiveis()),
+                novaHora, novaData, quantidadeReservada);
+
+        RestauranteDTO restauranteAtualizado = new RestauranteDTO(
+                restauranteDTO.nome(),
+                restauranteDTO.endereco(),
+                restauranteDTO.tipoDeCozinha(),
+                restauranteDTO.horarioDeFuncionamento(),
+                restauranteDTO.capacidade(),
+                restauranteDTO.cadeirasDisponiveis() - quantidadeReservada
+        );
+
+        // Mockando a chamada ao serviço para alterar a data
+        when(alterarDataReserva.alterarDataReserva(any(Reserva.class))).thenReturn(reserva);
+
+        // Criar o DTO da reserva para a requisição
+        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteDTO, LocalTime.of(16, 0), LocalDate.now(), restauranteAtualizado.cadeirasDisponiveis());
+
+        // Executando a requisição e verificando o resultado
+        mockMvc.perform(post("/reservas/data")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reservaDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(new ReservaDTO(
+                        clienteDTO,
+                        restauranteDTO,
+                        novaHora,
+                        novaData,
+                        restauranteAtualizado.cadeirasDisponiveis()
+                ))));
+    }
+
 }
