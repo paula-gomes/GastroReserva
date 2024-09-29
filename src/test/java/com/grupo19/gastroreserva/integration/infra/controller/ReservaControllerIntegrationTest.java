@@ -134,7 +134,6 @@ class ReservaControllerIntegrationTest {
 
     @Test
     void deveAlterarDataReserva() throws Exception {
-        // Criação de objetos de exemplo
         Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
         LocalTime horaAbertura = LocalTime.of(9, 0);
         LocalTime horaFechamento = LocalTime.of(18, 0);
@@ -142,41 +141,37 @@ class ReservaControllerIntegrationTest {
         RestauranteDTO restauranteDTO = new RestauranteDTO("Restaurante A", endereco, "Italiana", horario, 50, 20);
         ClienteDTO clienteDTO = new ClienteDTO("123.456.789-10", "João", "joao@example.com", new ArrayList<>());
 
-        // Informações da reserva
         LocalTime novaHora = LocalTime.of(17, 0);
         LocalDate novaData = LocalDate.now().plusDays(1);
-        int quantidadeReservada = 4;
-        // Criar a reserva
+        int quantidadeReservada = 20;
         Reserva reserva = new Reserva(new Cliente(clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.email()),
                 new Restaurante(restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteDTO.cadeirasDisponiveis()),
                 novaHora, novaData, quantidadeReservada);
 
+        when(alterarDataReserva.alterarDataReserva(any(Reserva.class))).thenReturn(reserva);
+
+        int cadeirasRestantes = restauranteDTO.cadeirasDisponiveis() - quantidadeReservada;
         RestauranteDTO restauranteAtualizado = new RestauranteDTO(
                 restauranteDTO.nome(),
                 restauranteDTO.endereco(),
                 restauranteDTO.tipoDeCozinha(),
                 restauranteDTO.horarioDeFuncionamento(),
                 restauranteDTO.capacidade(),
-                restauranteDTO.cadeirasDisponiveis() - quantidadeReservada
+                cadeirasRestantes
         );
 
-        // Mockando a chamada ao serviço para alterar a data
-        when(alterarDataReserva.alterarDataReserva(any(Reserva.class))).thenReturn(reserva);
+        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteDTO, LocalTime.of(16, 0), LocalDate.now(), restauranteDTO.cadeirasDisponiveis());
 
-        // Criar o DTO da reserva para a requisição
-        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteDTO, LocalTime.of(16, 0), LocalDate.now(), restauranteAtualizado.cadeirasDisponiveis());
-
-        // Executando a requisição e verificando o resultado
-        mockMvc.perform(post("/reservas/data")
+           mockMvc.perform(post("/reservas/data")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(reservaDTO)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(new ReservaDTO(
                         clienteDTO,
-                        restauranteDTO,
+                        restauranteAtualizado,  // Use o restaurante atualizado
                         novaHora,
                         novaData,
-                        restauranteAtualizado.cadeirasDisponiveis()
+                        quantidadeReservada
                 ))));
     }
 
