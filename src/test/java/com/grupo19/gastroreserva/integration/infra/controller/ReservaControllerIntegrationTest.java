@@ -1,10 +1,7 @@
 package com.grupo19.gastroreserva.integration.infra.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo19.gastroreserva.application.usecases.reserva.AlterarDataReserva;
-import com.grupo19.gastroreserva.application.usecases.reserva.AlterarHorarioReserva;
-import com.grupo19.gastroreserva.application.usecases.reserva.ListarReservas;
-import com.grupo19.gastroreserva.application.usecases.reserva.RealizarReserva;
+import com.grupo19.gastroreserva.application.usecases.reserva.*;
 import com.grupo19.gastroreserva.domain.Endereco;
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
@@ -14,6 +11,7 @@ import com.grupo19.gastroreserva.infra.controller.cliente.ClienteDTO;
 import com.grupo19.gastroreserva.infra.controller.reserva.ReservaDTO;
 import com.grupo19.gastroreserva.infra.controller.restaurante.RestauranteDTO;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,9 +26,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -52,6 +50,8 @@ class ReservaControllerIntegrationTest {
     private AlterarDataReserva alterarDataReserva;
     @MockBean
     private AlterarHorarioReserva alterarHorarioReserva;
+    @Mock
+    private CancelarReserva cancelarReserva;
 
 
     @Test
@@ -231,6 +231,42 @@ class ReservaControllerIntegrationTest {
                         dataAtual,
                         quantidadeReservada
                 ))));
+    }
+    @Test
+    void deveExcluirReserva() throws Exception {
+        Endereco endereco = new Endereco("11111-111", "logradouro", "10", "bairro", "cidade", "SP");
+        LocalTime horaAbertura = LocalTime.of(9, 0);
+        LocalTime horaFechamento = LocalTime.of(18, 0);
+        HorarioDeFuncionamento horario = new HorarioDeFuncionamento(horaAbertura, horaFechamento);
+
+        int cadeirasDisponiveis = 20;
+        int quantidadeReservada = 4;
+
+        RestauranteDTO restauranteDTO = new RestauranteDTO("Restaurante A", endereco, "Italiana", horario, 50, cadeirasDisponiveis);
+        ClienteDTO clienteDTO = new ClienteDTO("123.456.789-10", "João", "joao@example.com", new ArrayList<>());
+
+        LocalTime horarioReserva = LocalTime.of(16, 0);
+        LocalDate dataReserva = LocalDate.now();
+
+        Restaurante restaurante = new Restaurante(
+                restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(),
+                restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), cadeirasDisponiveis
+        );
+
+        Reserva reserva = new Reserva(
+                new Cliente(clienteDTO.cpf(), clienteDTO.nome(), clienteDTO.email()),
+                restaurante,
+                horarioReserva, dataReserva, quantidadeReservada
+        );
+
+        doNothing().when(cancelarReserva).cancelarReserva(any(Reserva.class));
+
+        ReservaDTO reservaDTO = new ReservaDTO(clienteDTO, restauranteDTO, horarioReserva, dataReserva, quantidadeReservada);
+
+        mockMvc.perform(delete("/reservas")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reservaDTO)))
+                .andExpect(status().isOk());
     }
 
 
