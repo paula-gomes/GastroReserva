@@ -1,4 +1,4 @@
-package com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento;
+package com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

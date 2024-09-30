@@ -1,11 +1,12 @@
 package com.grupo19.gastroreserva.infra.persistence.avaliacao;
 
-import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
-import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;

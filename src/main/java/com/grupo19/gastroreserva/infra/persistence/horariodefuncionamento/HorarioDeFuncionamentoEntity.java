@@ -1,7 +1,10 @@
-package com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento;
+package com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalTime;
 

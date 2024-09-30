@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -34,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class ReservaControllerIntegrationTest {
 
     @Autowired
@@ -129,7 +131,7 @@ class ReservaControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(new ReservaDTO(
                         clienteDTO,
-                        new RestauranteDTO(restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteAtualizado.cadeirasDisponiveis()),
+                        new RestauranteDTO( restauranteDTO.nome(), restauranteDTO.endereco(), restauranteDTO.tipoDeCozinha(), restauranteDTO.horarioDeFuncionamento(), restauranteDTO.capacidade(), restauranteAtualizado.cadeirasDisponiveis()),
                         LocalTime.of(16, 0),
                         LocalDate.now(),
                         quantidadeReservada
@@ -210,6 +212,7 @@ class ReservaControllerIntegrationTest {
 
         int cadeirasRestantes = restauranteDTO.cadeirasDisponiveis() - quantidadeReservada;
         RestauranteDTO restauranteAtualizado = new RestauranteDTO(
+
                 restauranteDTO.nome(),
                 restauranteDTO.endereco(),
                 restauranteDTO.tipoDeCozinha(),

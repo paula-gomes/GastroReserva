@@ -10,7 +10,7 @@ import com.grupo19.gastroreserva.infra.gateways.reserva.ReservaMapper;
 import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoEntity;
 import com.grupo19.gastroreserva.infra.persistence.reserva.ReservaEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

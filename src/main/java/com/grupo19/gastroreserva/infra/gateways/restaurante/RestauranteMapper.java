@@ -8,8 +8,8 @@ import com.grupo19.gastroreserva.infra.gateways.EnderecoMapper;
 import com.grupo19.gastroreserva.infra.gateways.HorarioDeFuncionamentoMapper;
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoRepository;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoRepository;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoRepository;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 
 

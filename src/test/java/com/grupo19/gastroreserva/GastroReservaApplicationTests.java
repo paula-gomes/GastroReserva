@@ -10,4 +10,9 @@ class GastroReservaApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testMain() {
+		GastroReservaApplication.main(new String[] {});
+	}
+
 }

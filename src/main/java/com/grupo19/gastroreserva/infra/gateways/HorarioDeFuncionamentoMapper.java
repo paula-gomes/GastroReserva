@@ -1,7 +1,7 @@
 package com.grupo19.gastroreserva.infra.gateways;
 
 import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoEntity;
 
 public class HorarioDeFuncionamentoMapper {
 

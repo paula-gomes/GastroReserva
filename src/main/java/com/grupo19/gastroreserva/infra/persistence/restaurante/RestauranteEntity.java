@@ -1,7 +1,7 @@
 package com.grupo19.gastroreserva.infra.persistence.restaurante;
 
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

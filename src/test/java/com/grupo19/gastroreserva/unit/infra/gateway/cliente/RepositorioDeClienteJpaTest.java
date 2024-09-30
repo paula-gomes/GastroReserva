@@ -1,15 +1,12 @@
 package com.grupo19.gastroreserva.unit.infra.gateway.cliente;
 
-import com.grupo19.gastroreserva.domain.Endereco;
-import com.grupo19.gastroreserva.domain.HorarioDeFuncionamento;
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
-import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
 import com.grupo19.gastroreserva.infra.gateways.cliente.ClienteMapper;
 import com.grupo19.gastroreserva.infra.gateways.cliente.RepositorioDeClienteJpa;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteRepository;
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoEntity;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

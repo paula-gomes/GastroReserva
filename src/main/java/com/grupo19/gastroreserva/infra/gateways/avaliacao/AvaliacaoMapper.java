@@ -8,7 +8,6 @@ import com.grupo19.gastroreserva.infra.gateways.restaurante.RestauranteMapper;
 import com.grupo19.gastroreserva.infra.persistence.avaliacao.AvaliacaoEntity;
 import com.grupo19.gastroreserva.infra.persistence.cliente.ClienteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
-import org.springframework.stereotype.Component;
 
 public class AvaliacaoMapper {
 

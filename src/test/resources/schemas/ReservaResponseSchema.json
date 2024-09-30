@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Reserva Response",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cliente": {
+      "type": "object",
+      "properties": {
+        "cpf": { "type": "string" },
+        "nome": { "type": "string" },
+        "email": { "type": "string" },
+        "restaurantes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nome": { "type": "string" },
+              "endereco": { "type": "string" },
+              "tipoDeCozinha": { "type": "string" },
+              "horarioDeFuncionamento": { "type": "string" },
+              "capacidade": { "type": "integer" },
+              "cadeirasDisponiveis": { "type": "integer" }
+            },
+            "required": [
+              "nome",
+              "endereco",
+              "tipoDeCozinha",
+              "horarioDeFuncionamento",
+              "capacidade",
+              "cadeirasDisponiveis"
+            ]
+          }
+        }
+      },
+      "required": ["cpf", "nome", "email", "restaurantes"]
+    },
+    "horario": { "type": "string" },
+    "data": { "type": "string" },
+    "quantidade": { "type": "integer" }
+  },
+  "required": ["cliente", "horario", "data", "quantidade"]
+}

@@ -6,3 +6,14 @@ CREATE TABLE cliente_entity
     email            VARCHAR(255)                            NOT NULL,
     CONSTRAINT pk_cliente_entity PRIMARY KEY (id)
 );
+
+CREATE TABLE restaurante (
+                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                             nome VARCHAR(255) NOT NULL,
+                             endereco VARCHAR(255) NOT NULL,
+                             tipo_de_cozinha VARCHAR(255) NOT NULL,
+                             horario_de_funcionamento VARCHAR(255) NOT NULL,
+                             capacidade INT NOT NULL,
+                             cadeiras_disponiveis INT NOT NULL
+);
+

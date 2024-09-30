@@ -21,7 +21,6 @@ public class Cliente {
         if (!cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")) {
             throw new IllegalArgumentException("CPF no formato inválido");
         }
-        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;

@@ -18,7 +18,7 @@ public class AvaliacaoConfig {
     @Bean
     EditarAvaliacao editarAvaliacao(RepositorioDeAvaliacaoJpa editarAvaliacaoInterface){
         return new EditarAvaliacao(editarAvaliacaoInterface);
-    };
+    }
 
     @Bean
     ExcluirAvaliacao excluirAvaliacao(RepositorioDeAvaliacaoJpa excluirAvaliacaoInterface){

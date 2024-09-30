@@ -5,10 +5,8 @@ import com.grupo19.gastroreserva.application.gateways.restaurante.CadastrarResta
 import com.grupo19.gastroreserva.application.gateways.restaurante.ExcluirRestauranteInterface;
 import com.grupo19.gastroreserva.application.gateways.restaurante.ListarRestaurantesInterface;
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
-import com.grupo19.gastroreserva.infra.gateways.EnderecoMapper;
-import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoEntity;
 import com.grupo19.gastroreserva.infra.persistence.endereco.EnderecoRepository;
-import com.grupo19.gastroreserva.infra.persistence.horarioDeFuncionamento.HorarioDeFuncionamentoRepository;
+import com.grupo19.gastroreserva.infra.persistence.horariodefuncionamento.HorarioDeFuncionamentoRepository;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteEntity;
 import com.grupo19.gastroreserva.infra.persistence.restaurante.RestauranteRepository;
 

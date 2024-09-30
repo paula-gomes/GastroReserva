@@ -29,7 +29,8 @@ public class RestauranteController {
     @GetMapping
     public List<RestauranteDTO> listarRestaurantes() {
         List<RestauranteDTO> restaurantesDTO = new ArrayList<>();
-        listarRestaurantes.listarRestaurantes().forEach(restaurante -> restaurantesDTO.add(new RestauranteDTO(restaurante.getNome(),
+        listarRestaurantes.listarRestaurantes().forEach(restaurante -> restaurantesDTO.add(new RestauranteDTO(
+                restaurante.getNome(),
                 restaurante.getEndereco(),
                 restaurante.getTipoDeCozinha(),
                 restaurante.getHorarioDeFuncionamento(),
@@ -47,7 +48,8 @@ public class RestauranteController {
                 restauranteDTO.capacidade(),
                 restauranteDTO.cadeirasDisponiveis()));
 
-        return new RestauranteDTO(salvo.getNome(),
+        return new RestauranteDTO(
+                salvo.getNome(),
                 salvo.getEndereco(),
                 salvo.getTipoDeCozinha(),
                 salvo.getHorarioDeFuncionamento(),
@@ -64,7 +66,8 @@ public class RestauranteController {
                 restauranteDTO.capacidade(),
                 restauranteDTO.cadeirasDisponiveis()));
 
-        return new RestauranteDTO(salvo.getNome(),
+        return new RestauranteDTO(
+                salvo.getNome(),
                 salvo.getEndereco(),
                 salvo.getTipoDeCozinha(),
                 salvo.getHorarioDeFuncionamento(),
