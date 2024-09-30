@@ -2,6 +2,7 @@ package com.grupo19.gastroreserva.domain.entities.reserva;
 
 import com.grupo19.gastroreserva.domain.entities.cliente.Cliente;
 import com.grupo19.gastroreserva.domain.entities.restaurante.Restaurante;
+import com.grupo19.gastroreserva.infra.persistence.reserva.ReservaEntity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
